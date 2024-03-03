@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TriviaAppClean.Models
 {
+    
     public class User
     {
         public int Id { get; set; }

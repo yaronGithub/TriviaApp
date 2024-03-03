@@ -342,6 +342,27 @@ namespace TriviaAppClean.Services
             }
         }
 
+        public List<Rank> GetRanks()
+        {
+            List<Rank> ranks = new List<Rank>();
+
+            ranks.Add(new Rank() { Id = 0, Name="Rookie" });
+            ranks.Add(new Rank() { Id = 1, Name = "Manager" });
+            ranks.Add(new Rank() { Id = 2, Name = "Admin" });
+
+            return ranks;
+        }
+
+        public List<QuestionStatus> GetQuestionStatuses()
+        {
+            List<QuestionStatus> statuses = new List<QuestionStatus>();
+
+            statuses.Add(new QuestionStatus() { Id = 0, Name = "Pending" });
+            statuses.Add(new QuestionStatus() { Id = 1, Name = "Approved" });
+            statuses.Add(new QuestionStatus() { Id = 2, Name = "Not Approved" });
+
+            return statuses;
+        }
     }
 
 
