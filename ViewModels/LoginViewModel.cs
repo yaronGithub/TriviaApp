@@ -29,8 +29,12 @@ namespace TriviaAppClean.ViewModels
             User u  = await this.triviaService.LoginAsync("ofer@ofer.com", "1234");
             //await Shell.Current.Navigation.PopModalAsync();
             InServerCall = false;
+
+            //Set the application logged in user to be whatever user returned (null or real user)
+            ((App)Application.Current).LoggedInUser = u;
             if (u == null)
             {
+                
                 await Shell.Current.DisplayAlert("Login", "Login Faild!", "ok");
             }
             else
