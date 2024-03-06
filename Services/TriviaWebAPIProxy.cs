@@ -347,7 +347,7 @@ namespace TriviaAppClean.Services
             List<Rank> ranks = new List<Rank>();
 
             ranks.Add(new Rank() { Id = 0, Name="Rookie" });
-            ranks.Add(new Rank() { Id = 1, Name = "Manager" });
+            ranks.Add(new Rank() { Id = 1, Name = "Master" });
             ranks.Add(new Rank() { Id = 2, Name = "Admin" });
 
             return ranks;
