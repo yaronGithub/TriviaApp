@@ -65,5 +65,15 @@ namespace TriviaAppClean.ViewModels
                 return !this.InServerCall;
             }
         }
+
+        //private string name;
+        //public string Name
+        //{
+        //    get { return name; }
+        //    set
+        //    {
+        //        OnPropertyChanged();
+        //    }
+        //}
     }
 }
