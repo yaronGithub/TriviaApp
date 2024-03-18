@@ -6,11 +6,11 @@
     <VerticalStackLayout Padding="10">
         <Label Text="Trivia-Log in" Margin="5" Style="{StaticResource headingStyle}"/>
         <Label Text="Email"/>
-        <Entry Placeholder="Enter email..."/>
+        <Entry Placeholder="Enter email..." Text="{Binding Email}"/>
         <Label Text="Password" />
-        <Entry Placeholder="Enter password..."/>
+        <Entry Placeholder="Enter password..." Text="{Binding Password}" IsPassword="True"/>
         <Button Text="Log in" Command="{Binding LoginCommand}" Margin="5"></Button>
-        <Label Text="{Binding emailError}"/>
+        <Label Text="{Binding emailError}" />
         <Label Text="{Binding passwordError}"/>
         <Button Text="Don't have an account? Sign up" Command="{Binding GoToSignUpCommand}"/>
        

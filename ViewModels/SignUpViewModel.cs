@@ -14,7 +14,7 @@ namespace TriviaAppClean.ViewModels
 
         private void Example()
         {
-            Application.Current.MainPage.Navigation.PushAsync(new SignUpView);
+            //Application.Current.MainPage.Navigation.PushAsync(new SignUpView);
         }
     }
 }

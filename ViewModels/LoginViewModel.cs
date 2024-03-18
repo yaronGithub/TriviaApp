@@ -14,8 +14,10 @@ namespace TriviaAppClean.ViewModels
     public class LoginViewModel:ViewModelBase
     {
         private TriviaWebAPIProxy triviaService;
-        public LoginViewModel(TriviaWebAPIProxy service) 
+        private AppShell shell;
+        public LoginViewModel(TriviaWebAPIProxy service, AppShell shell) 
         {
+            this.shell = shell;
             InServerCall = false;
             this.triviaService = service;
             this.LoginCommand = new Command(OnLogin);
@@ -46,6 +48,7 @@ namespace TriviaAppClean.ViewModels
             else
             {
                 await Shell.Current.DisplayAlert("Login", $"Login Succeed! for {u.Name} with {u.Questions.Count} Questions", "ok");
+                Application.Current.MainPage = shell;
             }
         }
 
