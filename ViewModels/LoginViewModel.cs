@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Xml.Linq;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
 
@@ -23,10 +24,15 @@ namespace TriviaAppClean.ViewModels
         public ICommand LoginCommand { get; set; }
         private async void OnLogin()
         {
+            if (ShowEmailError || showPasswordError)
+            {
+                await Shell.Current.DisplayAlert("Validation", "you have some errors!", "ok");
+                return;
+            }
             //Choose the way you want to blobk the page while indicating a server call
             InServerCall=true;
             //await Shell.Current.GoToAsync("connectingToServer");
-            User u  = await this.triviaService.LoginAsync("ofer@ofer.com", "1234");
+            User u  = await this.triviaService.LoginAsync(Email, Password);
             //await Shell.Current.Navigation.PopModalAsync();
             InServerCall = false;
 
@@ -65,15 +71,76 @@ namespace TriviaAppClean.ViewModels
                 return !this.InServerCall;
             }
         }
+        // ---------------------------------------------------------------------------------------------
+        private bool showEmailError;
+        public bool ShowEmailError
+        {
+            get => showEmailError;
+            set
+            {
+                showEmailError = value;
+                OnPropertyChanged("ShowEmailError");
+            }
+        }
+        private string email;
+        public string Email
+        {
+            get => email;
+            set
+            {
+                email = value;
+                ValidateEmail();
+                OnPropertyChanged("Email");
+            }
+        }
 
-        //private string name;
-        //public string Name
-        //{
-        //    get { return name; }
-        //    set
-        //    {
-        //        OnPropertyChanged();
-        //    }
-        //}
+        private string emailError;
+        public string EmailError
+        {
+            get => emailError;
+            set
+            {
+                emailError = value;
+                OnPropertyChanged("EmailError");
+            }
+        }
+        private void ValidateEmail()
+        {
+            this.ShowEmailError = string.IsNullOrEmpty(Email);
+        }
+        private bool showPasswordError;
+        public bool ShowPasswordError
+        {
+            get => showPasswordError;
+            set
+            {
+                showPasswordError = value;
+                OnPropertyChanged("ShowPasswordError");
+            }
+        }
+        private string password;
+        public string Password
+        {
+            get => password;
+            set
+            {
+                password = value;
+                OnPropertyChanged("Password");
+            }
+        }
+        private string passwordError;
+        public string PasswordError
+        {
+            get => passwordError;
+            set
+            {
+                passwordError = value;
+                OnPropertyChanged("PasswordError");
+            }
+        }
+        private void ValidatePassword()
+        {
+            this.ShowPasswordError = string.IsNullOrEmpty(Password);
+        }
     }
 }
