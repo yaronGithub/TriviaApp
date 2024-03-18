@@ -6,7 +6,7 @@
              Shell.PresentationMode="Modal">
     <VerticalStackLayout VerticalOptions="Center">
         
-        <Image Source="Loading.gif" IsAnimationPlaying="True"></Image>
+        <Image Source="loading.gif" IsAnimationPlaying="True"></Image>
         <Label Text="Loading..."/>
     </VerticalStackLayout>
 </ContentPage>
