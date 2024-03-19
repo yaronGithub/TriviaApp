@@ -12,6 +12,7 @@ public partial class App : Application
 		LoggedInUser = null;
 		InitializeComponent();
 
-		MainPage = login;
+		this.MainPage = new NavigationPage(login);
 	}
+	//Application.Current.Navigation.PushAsync(page);
 }
