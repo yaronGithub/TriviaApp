@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
+using static Java.Util.Jar.Attributes;
 
 namespace TriviaAppClean.ViewModels
 {
@@ -28,7 +29,15 @@ namespace TriviaAppClean.ViewModels
         {
             if (ShowEmailError || showPasswordError)
             {
-                await Shell.Current.DisplayAlert("Validation", "you have some errors!", "ok");
+                //await Shell.Current.DisplayAlert("Validation", "you have some errors!", "ok");
+                if (ShowEmailError)
+                {
+                    EmailError = "email wrong";
+                }
+                if (ShowPasswordError)
+                {
+                    PasswordError = "Password error";
+                }
                 return;
             }
             //Choose the way you want to blobk the page while indicating a server call
@@ -43,11 +52,11 @@ namespace TriviaAppClean.ViewModels
             if (u == null)
             {
                 
-                await Shell.Current.DisplayAlert("Login", "Login Faild!", "ok");
+                await Shell.Current.DisplayAlert("Login", "Login Failed!", "ok");
             }
             else
             {
-                await Shell.Current.DisplayAlert("Login", $"Login Succeed! for {u.Name} with {u.Questions.Count} Questions", "ok");
+                await Shell.Current.DisplayAlert("Login", $"Login Succeed!", "ok");
                 Application.Current.MainPage = shell;
             }
         }
@@ -109,7 +118,7 @@ namespace TriviaAppClean.ViewModels
         }
         private void ValidateEmail()
         {
-            this.ShowEmailError = string.IsNullOrEmpty(Email);
+            this.ShowEmailError = (string.IsNullOrEmpty(Email) || Email.Length < 5);
         }
         private bool showPasswordError;
         public bool ShowPasswordError
@@ -143,7 +152,7 @@ namespace TriviaAppClean.ViewModels
         }
         private void ValidatePassword()
         {
-            this.ShowPasswordError = string.IsNullOrEmpty(Password);
+            this.ShowPasswordError = (string.IsNullOrEmpty(Password) || Password.Length < 4);
         }
     }
 }

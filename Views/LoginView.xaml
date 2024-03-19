@@ -10,9 +10,8 @@
         <Label Text="Password" />
         <Entry Placeholder="Enter password..." Text="{Binding Password}" IsPassword="True"/>
         <Button Text="Log in" Command="{Binding LoginCommand}" Margin="5"></Button>
-        <Label Text="{Binding emailError}" />
-        <Label Text="{Binding passwordError}"/>
         <Button Text="Don't have an account? Sign up" Command="{Binding GoToSignUpCommand}"/>
-       
+        <Label Text="{Binding EmailError}" TextColor="Red"/>
+        <Label Text="{Binding PasswordError}" TextColor="Red"/>
     </VerticalStackLayout>
 </ContentPage>
