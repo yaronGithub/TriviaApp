@@ -13,6 +13,7 @@ public partial class App : Application
 		LoggedInUser = null;
 		InitializeComponent();
 
-		MainPage = new LoginView(loginVM);
+		this.MainPage = new NavigationPage(login);
 	}
+	//Application.Current.Navigation.PushAsync(page);
 }

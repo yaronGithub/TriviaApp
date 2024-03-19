@@ -201,8 +201,6 @@ namespace TriviaAppClean.ViewModels
             else
                 await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
 
-
-
         }
     }
 }

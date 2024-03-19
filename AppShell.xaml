@@ -5,10 +5,54 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:TriviaAppClean.Views"
     Shell.FlyoutBehavior="Disabled">
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+        <ShellContent
+         Title="Profile" 
+         ContentTemplate="{DataTemplate views:ProfileView}"
+         Route="profile" />
+        
+        <ShellContent
+         Title="Start Game"
+         ContentTemplate="{DataTemplate views:TriviaGameView}"
+         Route="startGame" />
+        
+        <ShellContent
+         Title="High Scores" 
+         ContentTemplate="{DataTemplate views:HighScoresView}"
+         Route="highScores" />
+    </FlyoutItem>
+    
+    <FlyoutItem IsVisible="{Binding IsAdmin}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+        <ShellContent
+      Title="PlayerList" 
+      ContentTemplate="{DataTemplate views:PlayerListView}"
+      Route="playerList" />
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:LoginView}"
-        Route="MainPage" />
+        <ShellContent
+      Title="Add Question"
+      ContentTemplate="{DataTemplate views:AddQuestionView}"
+      Route="addQuestion" />
 
+        <ShellContent
+      Title="High Scores" 
+      ContentTemplate="{DataTemplate views:HighScoresView}"
+      Route="Tab3" />
+    </FlyoutItem>
+    
+    <FlyoutItem  IsVisible="{Binding IsMaster}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+        <ShellContent
+      Title="QuestionApproval" 
+      ContentTemplate="{DataTemplate views:QuestionApprovalView}"
+      Route="questionApproval" />
+
+        <!--<ShellContent
+      Title="Start Game"
+      ContentTemplate="{DataTemplate views:TriviaGameView}"
+      Route="Tab3" />
+
+        <ShellContent
+      Title="High Scores" 
+      ContentTemplate="{DataTemplate views:HighScoresView}"
+      Route="Tab3" />-->
+    </FlyoutItem>
 </Shell>
