@@ -38,7 +38,7 @@ namespace TriviaAppClean.ViewModels
                 {
                     PasswordError = "Password error";
                 }
-                return;
+                
             }
             //Choose the way you want to blobk the page while indicating a server call
             InServerCall=true;
@@ -154,5 +154,6 @@ namespace TriviaAppClean.ViewModels
         {
             this.ShowPasswordError = (string.IsNullOrEmpty(Password) || Password.Length < 4);
         }
+
     }
 }
