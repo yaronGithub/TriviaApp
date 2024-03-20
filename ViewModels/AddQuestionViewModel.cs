@@ -13,6 +13,11 @@ namespace TriviaAppClean.ViewModels
     public class AddQuestionViewModel:ViewModelBase
     {
         private TriviaWebAPIProxy service;
+        public AddQuestionViewModel(TriviaWebAPIProxy service)
+        {
+            this.service = service;
+            this.SaveQuestionCommand = new Command(this.SaveQuestion);
+        }
 
         #region תוכן שאלה
         private bool showQuestionContentError;
@@ -254,8 +259,8 @@ namespace TriviaAppClean.ViewModels
                 return false;
             return true;
         }
-        public Command SaveDataCommand { protected set; get; }
-        private async void SaveData()
+        public Command SaveQuestionCommand { protected set; get; }
+        private async void SaveQuestion()
         {
             if (ValidateForm())
             {
