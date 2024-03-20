@@ -20,13 +20,29 @@
          Title="High Scores" 
          ContentTemplate="{DataTemplate views:HighScoresView}"
          Route="highScores" />
+        
+        <ShellContent
+      Title="Add Question"
+      ContentTemplate="{DataTemplate views:AddQuestionView}"
+      Route="addQuestion" />
     </FlyoutItem>
     
-    <FlyoutItem IsVisible="{Binding IsAdmin}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+
+    <FlyoutItem  IsVisible="{Binding IsMaster}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
         <ShellContent
-      Title="PlayerList" 
-      ContentTemplate="{DataTemplate views:PlayerListView}"
-      Route="playerList" />
+    Title="Profile" 
+         ContentTemplate="{DataTemplate views:ProfileView}"
+         Route="profile" />
+
+        <ShellContent
+         Title="Start Game"
+         ContentTemplate="{DataTemplate views:TriviaGameView}"
+         Route="startGame" />
+
+        <ShellContent
+         Title="High Scores" 
+         ContentTemplate="{DataTemplate views:HighScoresView}"
+         Route="highScores" />
 
         <ShellContent
       Title="Add Question"
@@ -34,25 +50,50 @@
       Route="addQuestion" />
 
         <ShellContent
-      Title="High Scores" 
-      ContentTemplate="{DataTemplate views:HighScoresView}"
-      Route="Tab3" />
-    </FlyoutItem>
-    
-    <FlyoutItem  IsVisible="{Binding IsMaster}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
-        <ShellContent
-      Title="QuestionApproval" 
+      Title="Question Approval" 
       ContentTemplate="{DataTemplate views:QuestionApprovalView}"
       Route="questionApproval" />
+    </FlyoutItem>
 
-        <!--<ShellContent
+    
+    
+    <FlyoutItem IsVisible="{Binding IsAdmin}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+        <ShellContent
+                
+      Title="Profile" 
+      ContentTemplate="{DataTemplate views:ProfileView}"
+      Route="profile" />
+
+        <ShellContent
       Title="Start Game"
       ContentTemplate="{DataTemplate views:TriviaGameView}"
-      Route="Tab3" />
+      Route="startGame" />
 
         <ShellContent
       Title="High Scores" 
       ContentTemplate="{DataTemplate views:HighScoresView}"
-      Route="Tab3" />-->
+      Route="highScores" />
+
+        <ShellContent
+   Title="Add Question"
+   ContentTemplate="{DataTemplate views:AddQuestionView}"
+   Route="addQuestion" />
+        
+        <ShellContent
+      Title="Question Approval" 
+      ContentTemplate="{DataTemplate views:QuestionApprovalView}"
+      Route="questionApproval" />
+        
+        <ShellContent
+         Title="Player List" 
+   ContentTemplate="{DataTemplate views:PlayerListView}"
+   Route="playerList" />
+
+        <ShellContent 
+            Title="All Questions"
+            ContentTemplate="{DataTemplate views:AllQuestionsView}"
+            Route="allQuestions"
+            />
+
     </FlyoutItem>
 </Shell>

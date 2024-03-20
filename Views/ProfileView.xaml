@@ -4,9 +4,20 @@
              x:Class="TriviaAppClean.Views.ProfileView"
              Title="ProfileView">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="{Binding Name}" Style="{StaticResource headingStyle}"/>
+
+        <Label Text="{Binding Rank}" Style="{StaticResource headingStyle}"/>
+
+        <Label Text="{Binding Name}"/>
+        <Entry Text="{Binding NameError}"/>
+        <Label Text="Email"/>
+        <Entry  Text="{Binding EmailError}"/>
+        <Label Text="Password" />
+        <Entry  Text="{Binding PasswordError}"/>
+
+        <Label Text="Points"/>
+        <Label Text="{Binding Points}"/>
+        <Button Text="Sign Up" Command="{Binding SaveProfileCommand}" Margin="5"></Button>
+
     </VerticalStackLayout>
 </ContentPage>

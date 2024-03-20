@@ -72,7 +72,7 @@ namespace TriviaAppClean.ViewModels
         #endregion
 
 
-         #region אימייל
+        #region אימייל
         private bool showEmailError;
 
         public bool ShowEmailError
