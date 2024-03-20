@@ -6,15 +6,15 @@
     <VerticalStackLayout Padding="10">
         <Label Text="Add Question:" Margin="5" Style="{StaticResource headingStyle}"/>
         <Label Text="Question Content"/>
-        <Entry Placeholder="Enter question content..." Text="{* }"/>
+        <Entry Placeholder="Enter question content..." Text="{Binding QuestionContentError}"/>
         <Label Text="Correct Answer"/>
-        <Entry Placeholder="Add correct answer" Text="{*}"/>
+        <Entry Placeholder="Add correct answer" Text="{Binding CorrectAnswerError}"/>
         <Label Text="Wrong Answer1" />
-        <Entry Placeholder="Add the 1st wrong answer..." Text="{*}"/>
+        <Entry Placeholder="Add the 1st wrong answer..." Text="{Binding WrongAnswer1Error}"/>
         <Label Text="Wrong Answer2" />
-        <Entry Placeholder="Add the 2st wrong answer..." Text="{*}"/>
+        <Entry Placeholder="Add the 2st wrong answer..." Text="{Binding WrongAnswer2Error}"/>
         <Label Text="Wrong Answer2" />
-        <Entry Placeholder="Add the 2st wrong answer..." Text="{*}"/>
-        <Button Text="Add Question" Command="{*}" Margin="5"></Button>
+        <Entry Placeholder="Add the 2st wrong answer..." Text="{Binding WrongAnswer3Error}"/>
+        <Button Text="Add Question" Command="{Binding SaveQuestionCommand}" Margin="5"></Button>
     </VerticalStackLayout>
 </ContentPage>
