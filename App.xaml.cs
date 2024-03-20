@@ -8,7 +8,7 @@ public partial class App : Application
 {
 	//Use this class to store global application data that should be accessible throughout the entire app!
 	public User LoggedInUser { get; set; }
-	public App(LoginViewModel loginVM)
+	public App(LoginView login)
 	{
 		LoggedInUser = null;
 		InitializeComponent();

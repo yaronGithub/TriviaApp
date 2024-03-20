@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaAppClean.Views.SignUpView"
              Title="SignUpView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="headingStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="errorLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <VerticalStackLayout Padding="10">
         <Label Text="Sign Up" Margin="5" Style="{StaticResource headingStyle}"/>
         <Label Text="Name"/>

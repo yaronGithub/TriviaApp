@@ -8,7 +8,7 @@ using System.Windows.Input;
 using System.Xml.Linq;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
-using static Java.Util.Jar.Attributes;
+using TriviaAppClean.Views;
 
 namespace TriviaAppClean.ViewModels
 {
@@ -16,12 +16,15 @@ namespace TriviaAppClean.ViewModels
     {
         private TriviaWebAPIProxy triviaService;
         private AppShell shell;
-        public LoginViewModel(TriviaWebAPIProxy service, AppShell shell) 
+        private SignUpView signUpView;
+        public LoginViewModel(TriviaWebAPIProxy service, AppShell shell, SignUpView signUpView) 
         {
             this.shell = shell;
             InServerCall = false;
             this.triviaService = service;
             this.LoginCommand = new Command(OnLogin);
+            this.GoToSignUpCommand =  new Command(GoSignUp);
+            this.signUpView = signUpView;
         }
 
         public ICommand LoginCommand { get; set; }
@@ -153,6 +156,12 @@ namespace TriviaAppClean.ViewModels
         private void ValidatePassword()
         {
             this.ShowPasswordError = (string.IsNullOrEmpty(Password) || Password.Length < 4);
+        }
+        public ICommand GoToSignUpCommand { get; set; } 
+        async void GoSignUp()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(signUpView);
+            //await Shell.Current.GoToAsync("//Views/SignUpView");
         }
     }
 }

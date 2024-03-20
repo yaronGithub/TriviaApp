@@ -3,6 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaAppClean.Views.LoginView"
              Title="LoginView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="headingStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="errorLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <VerticalStackLayout Padding="10">
         <Label Text="Trivia-Log in" Margin="5" Style="{StaticResource headingStyle}"/>
         <Label Text="Email"/>
@@ -11,7 +23,7 @@
         <Entry Placeholder="Enter password..." Text="{Binding Password}" IsPassword="True"/>
         <Button Text="Log in" Command="{Binding LoginCommand}" Margin="5"></Button>
         <Button Text="Don't have an account? Sign up" Command="{Binding GoToSignUpCommand}"/>
-        <Label Text="{Binding EmailError}" TextColor="Red"/>
-        <Label Text="{Binding PasswordError}" TextColor="Red"/>
+        <Label Text="{Binding EmailError}" Style="{StaticResource errorLabel}"/>
+        <Label Text="{Binding PasswordError}" Style="{StaticResource errorLabel}"/>
     </VerticalStackLayout>
 </ContentPage>
