@@ -65,10 +65,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\EditQuestionView.xaml.cs">
+	    <DependentUpon>EditQuestionView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\AddQuestionView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ConnectingToServerView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EditQuestionView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\HighScoresView.xaml">
