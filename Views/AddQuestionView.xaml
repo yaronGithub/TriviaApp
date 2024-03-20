@@ -6,7 +6,7 @@
     <VerticalStackLayout Padding="10">
         <Label Text="Add Question:" Margin="5" Style="{StaticResource headingStyle}"/>
         <Label Text="Question Content"/>
-        <Entry Placeholder="Enter question content..." Text="{* }"/>
+        <Entry Placeholder="Enter question content..." Text="{Binding }"/>
         <Label Text="Correct Answer"/>
         <Entry Placeholder="Add correct answer" Text="{*}"/>
         <Label Text="Wrong Answer1" />
