@@ -5,8 +5,36 @@
              Title="PlayerListView">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Player List:"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <CollectionView ItemsSource="{Binding Users}"
+                ItemsLayout="VerticalList"
+                SelectedItem="{Binding SelectedUser}"
+                SelectionMode="Single" SelectionChangedCommand="{Binding SingleSelectCommand}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="10" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="1"
+                               Text="{Binding Name}"
+                               FontAttributes="Bold"/>
+                        <Image Grid.Column="0" Grid.Row="0"
+                               Source="{Binding ImageUrl}"
+                               HorizontalOptions="Center"/>
+                        <Label Grid.Column="1" Grid.Row="0"
+                               Text="{Binding Details}"
+                               FontAttributes="Italic"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

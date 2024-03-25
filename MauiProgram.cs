@@ -45,6 +45,7 @@ public static class MauiProgram
     {
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<SignUpViewModel>();
+        //builder.Services.AddTransient<PlayerListViewModel>();
         return builder;
     }
 }

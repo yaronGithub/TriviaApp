@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TriviaAppClean.ViewModels
+﻿namespace TriviaAppClean.ViewModels
 {
-    internal class QuestionApprovalViewModel
+    public class QuestionApprovalViewModel : ViewModelBase
     {
     }
 }

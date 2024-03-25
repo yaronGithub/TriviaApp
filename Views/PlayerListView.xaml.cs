@@ -1,9 +1,12 @@
+using TriviaAppClean.ViewModels;
+
 namespace TriviaAppClean.Views;
 
 public partial class PlayerListView : ContentPage
 {
-	public PlayerListView()
+	public PlayerListView(PlayerListViewModel vm)
 	{
 		InitializeComponent();
+		this.BindingContext = vm;
 	}
 }

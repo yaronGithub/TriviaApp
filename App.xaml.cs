@@ -1,5 +1,4 @@
 ﻿using TriviaAppClean.Models;
-using TriviaAppClean.ViewModels;
 using TriviaAppClean.Views;
 
 namespace TriviaAppClean;

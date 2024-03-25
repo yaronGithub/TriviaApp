@@ -1,12 +1,7 @@
-﻿using Kotlin.Reflect;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using Kotlin.Reflect;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
-using static Java.Util.Jar.Attributes;
+//using static Java.Util.Jar.Attributes;
 
 namespace TriviaAppClean.ViewModels
 {

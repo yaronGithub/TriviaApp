@@ -1,15 +1,9 @@
-﻿//using CoreML;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using TriviaAppClean.Models;
 
 namespace TriviaAppClean.ViewModels
 {
-    internal class HighScoresViewModel : ViewModelBase
+    public class HighScoresViewModel : ViewModelBase
     {
         private ObservableCollection<User> users;
         public ObservableCollection<User> Users
