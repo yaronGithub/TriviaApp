@@ -1,5 +1,6 @@
 ﻿using TriviaAppClean.Views;
 using TriviaAppClean.Models;
+using TriviaAppClean.ViewModels;
 
 namespace TriviaAppClean;
 
@@ -7,6 +8,7 @@ public partial class AppShell : Shell
 {
 	public AppShell()
 	{
+		this.BindingContext = new ShellViewModel();
 		InitializeComponent();
 		RegisterRoutes();
 	}
