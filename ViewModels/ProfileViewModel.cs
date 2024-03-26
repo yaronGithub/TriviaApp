@@ -7,11 +7,21 @@ namespace TriviaAppClean.ViewModels
     public class ProfileViewModel:ViewModelBase
     {
             private TriviaWebAPIProxy service;
+           User u = ((App)Application.Current).LoggedInUser;
             public ProfileViewModel(TriviaWebAPIProxy service)
             {
                 this.service = service;
                 this.SaveProfileCommand = new Command(this.SaveProfile);
-            }
+                this.email = this.u.Email;
+                this.name = this.u.Name;
+                this.password=this.u.Password;
+                 if (this.u.Rank == 2)
+                 {
+                     this.rank = "Admin";
+                 }
+                 else if (this.u.Rank == 1) { this.rank = "Master"; } 
+                 else { this.rank = "Trainee"; }
+            }   
 
 
             #region שם
