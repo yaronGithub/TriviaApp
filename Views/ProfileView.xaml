@@ -4,6 +4,7 @@
              x:Class="TriviaAppClean.Views.ProfileView"
              Title="ProfileView">
     <VerticalStackLayout>
+        <Label Text="Edit Profile:" FontSize="Large" TextColor="MediumSpringGreen"/>
         <Label Text="{Binding Name}" Style="{StaticResource headingStyle}"/>
 
         <Label Text="{Binding Rank}" Style="{StaticResource headingStyle}"/>
