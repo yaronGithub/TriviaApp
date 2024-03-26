@@ -24,13 +24,13 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Grid.Row="1"
-                               Text="{Binding Name}"
+                               Text="{Binding Id}"
                                FontAttributes="Bold"/>
                         <Image Grid.Column="0" Grid.Row="0"
-                               Source="{Binding ImageUrl}"
+                               Source="{Binding Email}"
                                HorizontalOptions="Center"/>
                         <Label Grid.Column="1" Grid.Row="0"
-                               Text="{Binding Details}"
+                               Text="{Binding Name}"
                                FontAttributes="Italic"/>
                     </Grid>
                 </DataTemplate>
