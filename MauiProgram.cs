@@ -43,6 +43,7 @@ public static class MauiProgram
         builder.Services.AddTransient<ProfileView>();
         builder.Services.AddTransient<AllQuestionsView>();
         builder.Services.AddTransient<HighScoresView>();
+        builder.Services.AddTransient<PlayerDetailsView>();
         return builder;
     }
 
@@ -65,6 +66,7 @@ public static class MauiProgram
         builder.Services.AddTransient<QuestionApprovalViewModel>();
         builder.Services.AddTransient<AllQuestionsViewModel>();
         builder.Services.AddTransient<HighScoresViewModel>();
+        builder.Services.AddTransient<PlayerDetailsViewModel>();
         return builder;
     }
 }
