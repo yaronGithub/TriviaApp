@@ -61,12 +61,12 @@ public static class MauiProgram
         builder.Services.AddTransient<EditQuestionViewModel>();
         builder.Services.AddTransient<TriviaGameViewModel>();
         builder.Services.AddTransient<PlayerListViewModel>();
+        builder.Services.AddTransient<PlayerDetailsViewModel>();
         builder.Services.AddTransient<ProfileViewModel>();
         builder.Services.AddTransient<QuestionViewModel>();
         builder.Services.AddTransient<QuestionApprovalViewModel>();
         builder.Services.AddTransient<AllQuestionsViewModel>();
         builder.Services.AddTransient<HighScoresViewModel>();
-        builder.Services.AddTransient<PlayerDetailsViewModel>();
         return builder;
     }
 }

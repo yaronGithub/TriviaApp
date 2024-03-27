@@ -15,7 +15,7 @@ public partial class AppShell : Shell
 
 	private void RegisterRoutes()
 	{
-        Routing.RegisterRoute("connectingToServer", typeof(ConnectingToServerView));
         Routing.RegisterRoute("userDetails", typeof(PlayerDetailsView));
+        Routing.RegisterRoute("connectingToServer", typeof(ConnectingToServerView));
     }
 }
