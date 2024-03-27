@@ -1,21 +1,23 @@
 ﻿using TriviaAppClean.Models;
+using TriviaAppClean.Views;
+
 namespace TriviaAppClean.ViewModels
 {
     public class ShellViewModel : ViewModelBase
     {
         public ShellViewModel()
         {
-            RegisterRoutes();
+            
         }
 
-        private void RegisterRoutes()
-        {
-            Routing.RegisterRoute("connectingToServer", typeof(ConnectingToServerView));
-        }
+        
         public bool IsAdmin
         {
             get
             {
+                //Check if app was already created. otherwise return false;
+                if (Application.Current == null)
+                    return false;
                 User currentUser = ((App)Application.Current).LoggedInUser;
                 if (currentUser == null || currentUser.Rank < 2)
                 {
@@ -29,6 +31,9 @@ namespace TriviaAppClean.ViewModels
         {
             get
             {
+                //Check if app was already created. otherwise return false;
+                if (Application.Current == null)
+                    return false;
                 User currentUser = ((App)Application.Current).LoggedInUser;
                 if (currentUser != null || currentUser.Rank ==1)
                 {
@@ -36,6 +41,27 @@ namespace TriviaAppClean.ViewModels
                 }
                 return false;
             }
+        }
+        public bool IsTrainee
+        {
+            get
+            {
+                //Check if app was already created. otherwise return false;
+                if (Application.Current == null)
+                    return false;
+                User currentUser = ((App)Application.Current).LoggedInUser;
+                if (currentUser != null || currentUser.Rank == 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+        public void RefreshProperties()
+        {
+            OnPropertyChanged("IsAdmin");
+            OnPropertyChanged("IsMaster");
+            OnPropertyChanged("IsTrainee");
         }
     }
 }

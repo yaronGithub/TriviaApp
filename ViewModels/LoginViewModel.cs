@@ -53,6 +53,8 @@ namespace TriviaAppClean.ViewModels
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeed!", "ok");
+                ShellViewModel shellVM = (ShellViewModel)shell.BindingContext;
+                shellVM.RefreshProperties();
                 Application.Current.MainPage = shell;
             }
         }
@@ -153,6 +155,7 @@ namespace TriviaAppClean.ViewModels
         public ICommand GoToSignUpCommand { get; set; } 
         async void GoSignUp()
         {
+
             await Application.Current.MainPage.Navigation.PushAsync(signUpView);
             //await Shell.Current.GoToAsync("//Views/SignUpView");
         }

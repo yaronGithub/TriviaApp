@@ -12,15 +12,12 @@ namespace TriviaAppClean.ViewModels
             {
                 this.service = service;
                 this.SaveProfileCommand = new Command(this.SaveProfile);
-                this.email = this.u.Email;
-                this.name = this.u.Name;
-                this.password=this.u.Password;
-                 if (this.u.Rank == 2)
-                 {
-                     this.rank = "Admin";
-                 }
-                 else if (this.u.Rank == 1) { this.rank = "Master"; } 
-                 else { this.rank = "Trainee"; }
+                this.Email = this.u.Email;
+                this.Name = this.u.Name;
+                this.Password=this.u.Password;
+
+                List<Rank> ranks = service.GetRanks();
+                this.Rank = ranks.Where(r => r.Id == u.Rank).First().Name;
             }   
 
 
@@ -216,10 +213,11 @@ namespace TriviaAppClean.ViewModels
         public string Rank
         {
             get => rank;
-            //set
-            //{
-            //   rank = value;
-            //}
+            set
+            {
+                rank = value;
+                OnPropertyChanged();
+            }
         }
         #endregion
     }

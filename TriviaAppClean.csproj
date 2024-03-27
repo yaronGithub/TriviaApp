@@ -49,6 +49,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Views\AllQuestionsView.cs" />
 	  <Compile Remove="Views\LoadingPageView.xaml.cs" />
 	</ItemGroup>
 
@@ -72,6 +73,9 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\AddQuestionView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AllQuestionsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\ConnectingToServerView.xaml">

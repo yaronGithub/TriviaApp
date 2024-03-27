@@ -4,21 +4,28 @@
              x:Class="TriviaAppClean.Views.ProfileView"
              Title="ProfileView">
     <VerticalStackLayout>
-        <Label Text="Edit Profile:" FontSize="Large" TextColor="MediumSpringGreen"/>
+        <Label Text="Edit Profile:" FontSize="Large"/>
         <Label Text="{Binding Name}" Style="{StaticResource headingStyle}"/>
 
         <Label Text="{Binding Rank}" Style="{StaticResource headingStyle}"/>
-
-        <Label Text="{Binding Name}"/>
-        <Entry Text="{Binding NameError}"/>
+        <Label Text="Name" />
+        
+        <Entry Text="{Binding Name}"/>
+        <Label Text="{Binding NameError}"/>
+        
         <Label Text="Email"/>
-        <Entry  Text="{Binding EmailError}"/>
+        
+        <Entry  Text="{Binding Email}"/>
+        <Label Text="{Binding EmailError}"/>
+        
         <Label Text="Password" />
-        <Entry  Text="{Binding PasswordError}"/>
+       
+        <Entry  Text="{Binding Password}"/>
+        <Label Text="{Binding PasswordError}"/>
 
         <Label Text="Points"/>
         <Label Text="{Binding Points}"/>
-        <Button Text="Sign Up" Command="{Binding SaveProfileCommand}" Margin="5"></Button>
+        <Button Text="Save Changes" Command="{Binding SaveProfileCommand}" Margin="5"></Button>
 
     </VerticalStackLayout>
 </ContentPage>

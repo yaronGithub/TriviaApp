@@ -14,10 +14,10 @@ namespace TriviaAppClean.ViewModels
             this.SaveDataCommand = new Command(this.SaveData);
         }
 
-        private void Example()
-        {
-            //Application.Current.MainPage.Navigation.PushAsync(new SignUpView);
-        }
+        //private void Example()
+        //{
+        //    //Application.Current.MainPage.Navigation.PushAsync(new SignUpView);
+        //}
 
         #region שם
         private bool showNameError;

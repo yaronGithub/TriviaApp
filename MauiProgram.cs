@@ -2,6 +2,7 @@
 using TriviaAppClean.Services;
 using TriviaAppClean.ViewModels;
 using TriviaAppClean.Views;
+using TriviaAppClean.Models;
 
 namespace TriviaAppClean;
 
@@ -33,6 +34,15 @@ public static class MauiProgram
         builder.Services.AddTransient<AppShell>();
         builder.Services.AddTransient<LoginView>();
         builder.Services.AddTransient<SignUpView>();
+        builder.Services.AddTransient<AddQuestionView>();
+        //builder.Services.AddTransient<EditQuestionView>(AmericanQuestion q);
+        builder.Services.AddTransient<TriviaGameView>();
+        builder.Services.AddTransient<PlayerListView>();
+        builder.Services.AddTransient<QuestionView>();
+        builder.Services.AddTransient<QuestionApprovalView>();
+        builder.Services.AddTransient<ProfileView>();
+        builder.Services.AddTransient<AllQuestionsView>();
+        builder.Services.AddTransient<HighScoresView>();
         return builder;
     }
 
@@ -45,7 +55,16 @@ public static class MauiProgram
     {
         builder.Services.AddTransient<LoginViewModel>();
         builder.Services.AddTransient<SignUpViewModel>();
-        //builder.Services.AddTransient<PlayerListViewModel>();
+        builder.Services.AddTransient<ShellViewModel>();
+        builder.Services.AddTransient<AddQuestionViewModel>();
+        builder.Services.AddTransient<EditQuestionViewModel>();
+        builder.Services.AddTransient<TriviaGameViewModel>();
+        builder.Services.AddTransient<PlayerListViewModel>();
+        builder.Services.AddTransient<ProfileViewModel>();
+        builder.Services.AddTransient<QuestionViewModel>();
+        builder.Services.AddTransient<QuestionApprovalViewModel>();
+        builder.Services.AddTransient<AllQuestionsViewModel>();
+        builder.Services.AddTransient<HighScoresViewModel>();
         return builder;
     }
 }

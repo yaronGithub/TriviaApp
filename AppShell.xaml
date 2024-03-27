@@ -4,8 +4,12 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:TriviaAppClean.Views"
-    Shell.FlyoutBehavior="Disabled">
-    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+    Shell.FlyoutBehavior="Flyout">
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:TriviaGameView}"
+        Route="LoginView"/>
+    <FlyoutItem IsVisible="{Binding IsTrainee}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
         <ShellContent
          Title="Profile" 
          ContentTemplate="{DataTemplate views:ProfileView}"
