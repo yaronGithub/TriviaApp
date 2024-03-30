@@ -4,9 +4,36 @@
              x:Class="TriviaAppClean.Views.HighScoresView"
              Title="HighScoresView">
     <VerticalStackLayout>
+        <Label Text="High Scores"/>
         <Label Text="Search:"/>
         <Entry />
-        <Label Text="High Scores"/>
-        
+        <CollectionView ItemsSource="{Binding Users}"
+        ItemsLayout="VerticalList"
+        SelectedItem="{Binding SelectedUser}"
+        SelectionMode="Single" SelectionChangedCommand="{Binding SingleSelectCommand}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="1"
+                           Text="{Binding Id}"
+                           FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Grid.Row="0"
+                           Text="{Binding Name}"
+                           FontAttributes="Italic"/>
+                        <Label Grid.Column="2" Grid.Row="1"
+                            Text="{Binding Score}"
+                            FontAttributes="Italic"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>

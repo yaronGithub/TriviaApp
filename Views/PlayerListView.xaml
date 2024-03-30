@@ -26,8 +26,8 @@
                         <Label Grid.Column="0" Grid.Row="1"
                                Text="{Binding Id}"
                                FontAttributes="Bold"/>
-                        <Image Grid.Column="0" Grid.Row="0"
-                               Source="{Binding Email}"
+                        <Label Grid.Column="0" Grid.Row="0"
+                               Text="{Binding Email}"
                                HorizontalOptions="Center"/>
                         <Label Grid.Column="1" Grid.Row="0"
                                Text="{Binding Name}"

@@ -18,7 +18,7 @@
                                Text="{Binding SelectedUser.Id}" HorizontalOptions="Center"
                                FontAttributes="Bold"/>
             <Label Grid.Column="0" Grid.Row="1"
-                               Text="{Binding SelectedUser.Rank}" 
+                               Text="{Binding SelectedUser.Rank}"
                                FontAttributes="Bold" HorizontalOptions="Center"/>
             <Label Grid.Column="0" Grid.Row="2"
                                Text="{Binding SelectedUser.Name}" 

@@ -53,6 +53,7 @@ namespace TriviaAppClean.ViewModels
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeed!", "ok");
+                u.Score = 10;
                 ShellViewModel shellVM = (ShellViewModel)shell.BindingContext;
                 shellVM.RefreshProperties();
                 Application.Current.MainPage = shell;
