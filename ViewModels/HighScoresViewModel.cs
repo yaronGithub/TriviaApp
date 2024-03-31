@@ -17,10 +17,27 @@ namespace TriviaAppClean.ViewModels
             set
             {
                 this.users = value;
-                List<User> newUsers =  this.users.ToList();
-                SortUsersByScoreDescending(newUsers);
-                this.users = new ObservableCollection<User>(newUsers);
-                OnPropertyChanged();
+                if (string.IsNullOrEmpty(UserName))
+                {
+                    List<User> newUsers = this.users.ToList();
+                    SortUsersByScoreDescending(newUsers);
+                    this.users = new ObservableCollection<User>(newUsers);
+                    OnPropertyChanged();
+                }
+                else
+                {
+                    List<User> newUsers = new List<User>();
+                    foreach (User user in this.users)
+                    {
+                        if (user.Name == UserName)
+                        {
+                            newUsers.Add(user);
+                        }
+                        SortUsersByScoreDescending(newUsers);
+                        this.users = new ObservableCollection<User>(newUsers);
+                        OnPropertyChanged();
+                    }
+                }
             }
         }
         private void SortUsersByScoreDescending(List<User> userList)
@@ -67,5 +84,17 @@ namespace TriviaAppClean.ViewModels
         //        SelectedUser = null;
         //    }
         //}
+        private string userName;
+        public string UserName
+        {
+            get
+            {
+                return userName;
+            }
+            set
+            {
+                userName = value; OnPropertyChanged();
+            }
+        }
     }
 }

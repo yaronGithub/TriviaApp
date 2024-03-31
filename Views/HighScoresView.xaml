@@ -5,8 +5,7 @@
              Title="HighScoresView">
     <VerticalStackLayout>
         <Label Text="High Scores"/>
-        <Label Text="Search:"/>
-        <Entry />
+        <Entry Placeholder="Type Name Here..." Text="{Binding UserName}"></Entry>
         <CollectionView ItemsSource="{Binding Users}"
         ItemsLayout="VerticalList"
         SelectedItem="{Binding SelectedUser}"
