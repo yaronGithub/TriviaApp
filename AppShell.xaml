@@ -5,11 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:TriviaAppClean.Views"
     Shell.FlyoutBehavior="Flyout">
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:TriviaGameView}"
-        Route="LoginView"/>
-    <FlyoutItem IsVisible="{Binding IsTrainee}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+    
+    <FlyoutItem IsVisible="{Binding IsTrainee}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs3">
         <ShellContent
          Title="Profile" 
          ContentTemplate="{DataTemplate views:ProfileView}"
@@ -32,7 +29,7 @@
     </FlyoutItem>
     
 
-    <FlyoutItem  IsVisible="{Binding IsMaster}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+    <FlyoutItem IsVisible="{Binding IsMaster}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs2">
         <ShellContent
     Title="Profile" 
          ContentTemplate="{DataTemplate views:ProfileView}"
@@ -61,7 +58,7 @@
 
     
     
-    <FlyoutItem IsVisible="{Binding IsAdmin}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs">
+    <FlyoutItem IsVisible="{Binding IsAdmin}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs1">
         <ShellContent
                 
       Title="Profile" 

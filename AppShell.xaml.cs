@@ -18,4 +18,13 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("userDetails", typeof(PlayerDetailsView));
         Routing.RegisterRoute("connectingToServer", typeof(ConnectingToServerView));
     }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        ShellViewModel vm = (ShellViewModel)this.BindingContext;
+        vm.RefreshProperties();
+
+    }
 }

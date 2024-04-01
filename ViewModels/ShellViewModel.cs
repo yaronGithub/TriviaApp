@@ -11,6 +11,7 @@ namespace TriviaAppClean.ViewModels
         }
 
         
+        
         public bool IsAdmin
         {
             get
@@ -35,7 +36,7 @@ namespace TriviaAppClean.ViewModels
                 if (Application.Current == null)
                     return false;
                 User currentUser = ((App)Application.Current).LoggedInUser;
-                if (currentUser != null || currentUser.Rank ==1)
+                if (currentUser != null && currentUser.Rank ==1)
                 {
                     return true;
                 }
@@ -50,7 +51,7 @@ namespace TriviaAppClean.ViewModels
                 if (Application.Current == null)
                     return false;
                 User currentUser = ((App)Application.Current).LoggedInUser;
-                if (currentUser != null || currentUser.Rank == 0)
+                if (currentUser != null && currentUser.Rank == 0)
                 {
                     return true;
                 }
