@@ -3,10 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaAppClean.Views.TriviaGameView"
              Title="TriviaGameView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="dStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="TextColor" Value="Green"/>
+            </Style>
+            <Style x:Key="errorLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Red"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Trivia Game:" Style="{StaticResource dStyle}"></Label>
+        <Label Text="{Binding QuestionContent}"/>
+        <Button Text="{Binding CorrectAnswer}" Command="{Binding CorrectCommand}"/>
+        <Button Text="{Binding WrongAnswer1}" Command="{Binding WrongCommand}"/>
+        <Button Text="{Binding WrongAnswer2}" Command="{Binding WrongCommand}"/>
+        <Button Text="{Binding WrongAnswer3}" Command="{Binding WrongCommand}"/>
+        <Button Text="Quit Game!" Command="{Binding QuitGame}"/>
+        <Label Text="{Binding Dialog}"/>
     </VerticalStackLayout>
 </ContentPage>
