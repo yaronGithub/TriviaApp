@@ -93,7 +93,9 @@ namespace TriviaAppClean.ViewModels
             }
             set
             {
-                userName = value; OnPropertyChanged();
+                userName = value;
+                Users = Users;
+                OnPropertyChanged();
             }
         }
     }
