@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
+//using Windows.ApplicationModel.VoiceCommands;
 
 namespace TriviaAppClean.ViewModels
 {
@@ -17,27 +18,7 @@ namespace TriviaAppClean.ViewModels
             set
             {
                 this.users = value;
-                if (string.IsNullOrEmpty(UserName))
-                {
-                    List<User> newUsers = this.users.ToList();
-                    SortUsersByScoreDescending(newUsers);
-                    this.users = new ObservableCollection<User>(newUsers);
-                    OnPropertyChanged();
-                }
-                else
-                {
-                    List<User> newUsers = new List<User>();
-                    foreach (User user in this.users)
-                    {
-                        if (user.Name == UserName)
-                        {
-                            newUsers.Add(user);
-                        }
-                        SortUsersByScoreDescending(newUsers);
-                        this.users = new ObservableCollection<User>(newUsers);
-                        OnPropertyChanged();
-                    }
-                }
+                OnPropertyChanged();
             }
         }
         private void SortUsersByScoreDescending(List<User> userList)
@@ -49,13 +30,37 @@ namespace TriviaAppClean.ViewModels
         {
             this.usersService = service;
             users = new ObservableCollection<User>();
+            list = new List<User>();
             ReadUsers();
         }
+
+        private List<User> list;
         private async void ReadUsers()
         {
             TriviaWebAPIProxy service = this.usersService;
-            List<User> list = await service.GetAllUsers();
+            list = await service.GetAllUsers();
             this.Users = new ObservableCollection<User>(list);
+            FilterUsers();
+        }
+
+        private void FilterUsers()
+        {
+            SortUsersByScoreDescending(list);
+            if (UserName == null || String.IsNullOrEmpty(UserName))
+            {
+                this.Users = new ObservableCollection<User>(list);
+                return;
+            }
+
+            this.Users = new ObservableCollection<User>();
+            foreach (User u in Users)
+            {
+                if (u.Name.Contains(UserName))
+                {
+                    Users.Add(u);
+                }
+            }
+            Users = Users;
         }
         //private Object selectedUser;
         //public Object SelectedUser
@@ -94,7 +99,7 @@ namespace TriviaAppClean.ViewModels
             set
             {
                 userName = value;
-                Users = Users;
+                FilterUsers();
                 OnPropertyChanged();
             }
         }

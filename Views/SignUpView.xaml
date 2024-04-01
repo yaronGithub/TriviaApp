@@ -18,11 +18,14 @@
     <VerticalStackLayout Padding="10">
         <Label Text="Sign Up" Margin="5" Style="{StaticResource headingStyle}"/>
         <Label Text="Name"/>
-        <Entry Placeholder="Enter name..." Text="{Binding NameError}"/>
+        <Entry Placeholder="Enter name..." Text="{Binding Name}"/>
+        <Label Text="{Binding NameError}"/>
         <Label Text="Email"/>
-        <Entry Placeholder="Enter email..." Text="{Binding EmailError}"/>
+        <Entry Placeholder="Enter email..." Text="{Binding Email}"/>
+        <Label Text="{Binding EmailError}"/>
         <Label Text="Password" />
-        <Entry Placeholder="Enter password..." Text="{Binding PasswordError}"/>
+        <Entry Placeholder="Enter password..." Text="{Binding Password}"/>
+        <Label Text="{Binding PasswordError}"/>
         <Button Text="Sign Up" Command="{Binding SaveDataCommand}" Margin="5"></Button>
        
         <!--<ActivityIndicator IsRunning="{Binding InServerCall}" Color="Red"></ActivityIndicator>-->

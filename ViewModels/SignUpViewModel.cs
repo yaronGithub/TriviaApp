@@ -1,15 +1,18 @@
 ﻿using System.Text.RegularExpressions;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
+using TriviaAppClean.Views;
 
 namespace TriviaAppClean.ViewModels
 {
     public class SignUpViewModel:ViewModelBase
     {
+        private ConnectingToServerView cs;
         // ICommand SignUpCommand = new Command();
         private TriviaWebAPIProxy service;
-        public SignUpViewModel(TriviaWebAPIProxy service)
+        public SignUpViewModel(TriviaWebAPIProxy service, ConnectingToServerView cs)
         {
+            this.cs = cs;
             this.service = service;
             this.SaveDataCommand = new Command(this.SaveData);
         }
@@ -179,8 +182,9 @@ namespace TriviaAppClean.ViewModels
                     Email = this.Email,
                     Password = this.Password
                 };
+                Application.Current.MainPage.Navigation.PushModalAsync(cs);
                 bool success = await service.RegisterUser(user);
-
+                Application.Current.MainPage.Navigation.PopModalAsync();
                 if (!success)
                 {
                     await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);

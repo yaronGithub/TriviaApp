@@ -1,6 +1,7 @@
 ﻿//using Kotlin.Reflect;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
+using TriviaAppClean.Views;
 //using static Java.Util.Jar.Attributes;
 
 namespace TriviaAppClean.ViewModels
@@ -8,8 +9,10 @@ namespace TriviaAppClean.ViewModels
     public class AddQuestionViewModel:ViewModelBase
     {
         private TriviaWebAPIProxy service;
-        public AddQuestionViewModel(TriviaWebAPIProxy service)
+        private ConnectingToServerView cs;
+        public AddQuestionViewModel(TriviaWebAPIProxy service, ConnectingToServerView cs)
         {
+            this.cs = cs;
             this.service = service;
             this.SaveQuestionCommand = new Command(this.SaveQuestion);
         }
@@ -270,7 +273,10 @@ namespace TriviaAppClean.ViewModels
                     Status = 0,
                     UserId=u.Id
                 };
+                Application.Current.MainPage.Navigation.PushModalAsync(cs);
                 bool success = await service.PostNewQuestion(q);
+                Application.Current.MainPage.Navigation.PopModalAsync();
+                
 
                 if (!success)
                 {

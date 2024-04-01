@@ -10,7 +10,8 @@ namespace TriviaAppClean.ViewModels
         private TriviaWebAPIProxy triviaService;
         private AppShell shell;
         private SignUpView signUpView;
-        public LoginViewModel(TriviaWebAPIProxy service, AppShell shell, SignUpView signUpView) 
+        private ConnectingToServerView connectingToServerView;
+        public LoginViewModel(TriviaWebAPIProxy service, AppShell shell, SignUpView signUpView, ConnectingToServerView connectingToServerView) 
         {
             this.shell = shell;
             InServerCall = false;
@@ -18,6 +19,7 @@ namespace TriviaAppClean.ViewModels
             this.LoginCommand = new Command(OnLogin);
             this.GoToSignUpCommand =  new Command(GoSignUp);
             this.signUpView = signUpView;
+            this.connectingToServerView = connectingToServerView;
         }
 
         public ICommand LoginCommand { get; set; }
@@ -39,7 +41,9 @@ namespace TriviaAppClean.ViewModels
             //Choose the way you want to blobk the page while indicating a server call
             InServerCall=true;
             //await Shell.Current.GoToAsync("connectingToServer");
+            await Application.Current.MainPage.Navigation.PushModalAsync(connectingToServerView);
             User u  = await this.triviaService.LoginAsync(Email, Password);
+            await Application.Current.MainPage.Navigation.PopModalAsync();
             //await Shell.Current.Navigation.PopModalAsync();
             InServerCall = false;
 

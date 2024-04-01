@@ -6,23 +6,29 @@ namespace TriviaAppClean.ViewModels
 {
     public class ProfileViewModel:ViewModelBase
     {
-            private TriviaWebAPIProxy service;
-           User u = ((App)Application.Current).LoggedInUser;
-            public ProfileViewModel(TriviaWebAPIProxy service)
-            {
-                this.service = service;
-                this.SaveProfileCommand = new Command(this.SaveProfile);
-                this.Email = this.u.Email;
-                this.Name = this.u.Name;
-                this.Password=this.u.Password;
+        private TriviaWebAPIProxy service;
 
-                List<Rank> ranks = service.GetRanks();
-                this.Rank = ranks.Where(r => r.Id == u.Rank).First().Name;
-            }   
+        public ProfileViewModel(TriviaWebAPIProxy service)
+        {
+            User u = ((App)Application.Current).LoggedInUser;
+
+            this.service = service;
+            this.SaveProfileCommand = new Command(this.SaveProfile);
+            Email = u.Email;
+            Name = u.Name;
+            Password = u.Password;
+            Score = u.Score;
+            List<Rank> ranks = service.GetRanks();
+            Rank = ranks.Where(r => r.Id == u.Rank).First().Name;
+            this.NameError = "זהו שדה חובה";
+            this.PasswordError = "זהו שדה חובה";
+            this.EmailError = "זהו שדה חובה";
+
+        }
 
 
-            #region שם
-            private bool showNameError;
+        #region שם
+        private bool showNameError;
 
             public bool ShowNameError
             {
@@ -181,8 +187,11 @@ namespace TriviaAppClean.ViewModels
                         Email = this.Email,
                         Password = this.Password
                     };
+                await Shell.Current.GoToAsync("connectingToServer");
+
                     bool success = await service.UpdateUser(user);
 
+                await Shell.Current.Navigation.PopModalAsync();
                     if (!success)
                     {
                         await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
@@ -197,14 +206,14 @@ namespace TriviaAppClean.ViewModels
 
             }
             #region נקודות
-        private int points;
-        public int Points
+        private int score;
+        public int Score
         {
-            get  => points; 
-            //set
-            //{ 
-            //    points = value;
-            //}
+            get  => score;
+            set
+            {
+                score = value;
+            }
         }
         #endregion
 

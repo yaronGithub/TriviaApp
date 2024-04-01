@@ -35,7 +35,7 @@ public static class MauiProgram
         builder.Services.AddTransient<LoginView>();
         builder.Services.AddTransient<SignUpView>();
         builder.Services.AddTransient<AddQuestionView>();
-        //builder.Services.AddTransient<EditQuestionView>(AmericanQuestion q);
+        builder.Services.AddTransient<EditQuestion>();
         builder.Services.AddTransient<TriviaGameView>();
         builder.Services.AddTransient<PlayerListView>();
         builder.Services.AddTransient<QuestionView>();
@@ -44,6 +44,7 @@ public static class MauiProgram
         builder.Services.AddTransient<AllQuestionsView>();
         builder.Services.AddTransient<HighScoresView>();
         builder.Services.AddTransient<PlayerDetailsView>();
+        builder.Services.AddTransient<ConnectingToServerView>();
         return builder;
     }
 
@@ -67,6 +68,7 @@ public static class MauiProgram
         builder.Services.AddTransient<QuestionApprovalViewModel>();
         builder.Services.AddTransient<AllQuestionsViewModel>();
         builder.Services.AddTransient<HighScoresViewModel>();
+        builder.Services.AddTransient<ConnectingToServerView>();
         return builder;
     }
 }
