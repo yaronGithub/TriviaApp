@@ -9,11 +9,20 @@ namespace TriviaAppClean.ViewModels
         public TriviaGameViewModel(TriviaWebAPIProxy service)
         {
             this.service = service;
+            InitQues();
             //this.SaveQuestionCommand = new Command(this.SaveQuestion);
         }
-
+        private async void InitQues()
+        {
+            AmericanQuestion amq = await service.GetRandomQuestion();
+            QuestionContent = amq.QText;
+            CorrectAnswer = amq.CorrectAnswer;
+            WrongAnswer1 = amq.Bad1;
+            WrongAnswer2 = amq.Bad2;
+            WrongAnswer3 = amq.Bad3;
+        }
         #region תוכן שאלה
-       
+
 
         private string questionContent;
 
@@ -36,7 +45,7 @@ namespace TriviaAppClean.ViewModels
             get => correctAnswer;
             set
             {
-                questionContent = value;
+                correctAnswer = value;
                 OnPropertyChanged("CorrectAnswer");
             }
         }
@@ -100,17 +109,6 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged();
             }
         }
-        private AmericanQuestion currentQuestion;
-        public AmericanQuestion CurrentQuestion
-        {
-            get => currentQuestion;
-            set
-            {
-                currentQuestion = value;
-                OnPropertyChanged();
-            }
-        }
-
         public Command SaveQuestionCommand { protected set; get; }
         public Command CorrectCommand {  protected set; get; }
         public async void IfCorrect()
@@ -118,18 +116,24 @@ namespace TriviaAppClean.ViewModels
             User u = ((App)Application.Current).LoggedInUser;
             u.Score += 100;
             Dialog = "Correct Answer!";
-            CurrentQuestion = await service.GetRandomQuestion();
-            QuestionContent = CurrentQuestion.QText;
-            CorrectAnswer = CurrentQuestion.CorrectAnswer;
-            WrongAnswer1 = CurrentQuestion.Bad1;
-            WrongAnswer2 = CurrentQuestion.Bad2;
-            WrongAnswer3 = CurrentQuestion.Bad3;
+            AmericanQuestion amq = await service.GetRandomQuestion();
+            QuestionContent = amq.QText;
+            CorrectAnswer = amq.CorrectAnswer;
+            WrongAnswer1 = amq.Bad1;
+            WrongAnswer2 = amq.Bad2;
+            WrongAnswer3 = amq.Bad3;
         }
         public Command WrongCommand { protected set; get; }
-        public void IfWrong()
+        public async void IfWrongAsync()
         {
-            User u = ((App)Application.Current).LoggedInUser;
+            //User u = ((App)Application.Current).LoggedInUser;
             Dialog = "Wrong Answer!";
+            AmericanQuestion amq = await service.GetRandomQuestion();
+            QuestionContent = amq.QText;
+            CorrectAnswer = amq.CorrectAnswer;
+            WrongAnswer1 = amq.Bad1;
+            WrongAnswer2 = amq.Bad2;
+            WrongAnswer3 = amq.Bad3;
         }
     }
 }

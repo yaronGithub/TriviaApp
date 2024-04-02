@@ -53,7 +53,7 @@ namespace TriviaAppClean.ViewModels
             }
 
             this.Users = new ObservableCollection<User>();
-            foreach (User u in Users)
+            foreach (User u in list)
             {
                 if (u.Name.Contains(UserName))
                 {

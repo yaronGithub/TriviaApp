@@ -5,7 +5,7 @@
              Title="ConnectingToServerView"
              Shell.PresentationMode="Modal">
     <VerticalStackLayout VerticalOptions="Center">
-        
+
         <Image Source="wait.gif" IsAnimationPlaying="True"></Image>
         <!--<Label Text="Loading..."/>-->
     </VerticalStackLayout>
