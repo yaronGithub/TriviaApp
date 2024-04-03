@@ -21,7 +21,6 @@ namespace TriviaAppClean.ViewModels
             this.signUpView = signUpView;
             this.connectingToServerView = connectingToServerView;
         }
-
         public ICommand LoginCommand { get; set; }
         private async void OnLogin()
         {

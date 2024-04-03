@@ -9,6 +9,8 @@ namespace TriviaAppClean.ViewModels
         public TriviaGameViewModel(TriviaWebAPIProxy service)
         {
             this.service = service;
+            this.CorrectCommand = new Command(this.IfCorrectAsync);
+            this.WrongCommand = new Command(this.IfWrongAsync);
             InitQues();
             //this.SaveQuestionCommand = new Command(this.SaveQuestion);
         }
@@ -106,12 +108,12 @@ namespace TriviaAppClean.ViewModels
             set
             {
                 dialog = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Dialog");
             }
         }
         public Command SaveQuestionCommand { protected set; get; }
         public Command CorrectCommand {  protected set; get; }
-        public async void IfCorrect()
+        public async void IfCorrectAsync()
         {
             User u = ((App)Application.Current).LoggedInUser;
             u.Score += 100;
