@@ -31,6 +31,6 @@
         </StackLayout>
 
         <Button Text="Quit Game!" Command="{Binding QuitGame}"/>
-        <Label Text="{Binding Dialog}"/>
+        <Label Text="{Binding Dialog}" TextColor="{Binding DialogColor}"/>
     </VerticalStackLayout>
 </ContentPage>

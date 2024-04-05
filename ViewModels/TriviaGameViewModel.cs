@@ -111,6 +111,16 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("Dialog");
             }
         }
+        private Color dialogColor;
+        public Color DialogColor
+        {
+            get => dialogColor;
+            set
+            {
+                dialogColor = value;
+                OnPropertyChanged("DialogColor");
+            }
+        }
         public Command SaveQuestionCommand { protected set; get; }
         public Command CorrectCommand {  protected set; get; }
         public async void IfCorrectAsync()
@@ -118,6 +128,7 @@ namespace TriviaAppClean.ViewModels
             User u = ((App)Application.Current).LoggedInUser;
             u.Score += 100;
             Dialog = "Correct Answer!";
+            DialogColor = Colors.Green;
             AmericanQuestion amq = await service.GetRandomQuestion();
             QuestionContent = amq.QText;
             CorrectAnswer = amq.CorrectAnswer;
@@ -130,6 +141,7 @@ namespace TriviaAppClean.ViewModels
         {
             //User u = ((App)Application.Current).LoggedInUser;
             Dialog = "Wrong Answer!";
+            DialogColor = Colors.Red;
             AmericanQuestion amq = await service.GetRandomQuestion();
             QuestionContent = amq.QText;
             CorrectAnswer = amq.CorrectAnswer;
