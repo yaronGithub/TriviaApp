@@ -135,6 +135,7 @@ namespace TriviaAppClean.ViewModels
             WrongAnswer1 = amq.Bad1;
             WrongAnswer2 = amq.Bad2;
             WrongAnswer3 = amq.Bad3;
+            Dialog = "";
         }
         public Command WrongCommand { protected set; get; }
         public async void IfWrongAsync()
@@ -148,6 +149,7 @@ namespace TriviaAppClean.ViewModels
             WrongAnswer1 = amq.Bad1;
             WrongAnswer2 = amq.Bad2;
             WrongAnswer3 = amq.Bad3;
+            Dialog = "";
         }
     }
 }
