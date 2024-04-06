@@ -1,5 +1,6 @@
 ﻿using TriviaAppClean.Models;
 using TriviaAppClean.Services;
+using TriviaAppClean.Views;
 
 namespace TriviaAppClean.ViewModels
 {
@@ -9,9 +10,12 @@ namespace TriviaAppClean.ViewModels
         public TriviaGameViewModel(TriviaWebAPIProxy service)
         {
             this.service = service;
-            this.CorrectCommand = new Command(this.IfCorrectAsync);
-            this.WrongCommand = new Command(this.IfWrongAsync);
+            this.CorrectCommand = new Command(this.IfCorrect);
+            this.WrongCommand = new Command(this.IfWrong);
+            this.NextCommand = new Command(this.IfNextAsync);
             InitQues();
+            Enabled = true;
+            Visible = false;
             //this.SaveQuestionCommand = new Command(this.SaveQuestion);
         }
         private async void InitQues()
@@ -121,35 +125,58 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("DialogColor");
             }
         }
+        private bool enabled;
+        public bool Enabled
+        {
+            get => enabled;
+            set
+            {
+                enabled = value;
+                OnPropertyChanged("Enabled");
+            }
+        }
+        private bool visible;
+        public bool Visible
+        {
+            get => visible;
+            set
+            {
+                visible = value;
+                OnPropertyChanged("Visible");
+            }
+        }
         public Command SaveQuestionCommand { protected set; get; }
         public Command CorrectCommand {  protected set; get; }
-        public async void IfCorrectAsync()
+        public void IfCorrect()
         {
             User u = ((App)Application.Current).LoggedInUser;
             u.Score += 100;
             Dialog = "Correct Answer!";
             DialogColor = Colors.Green;
-            AmericanQuestion amq = await service.GetRandomQuestion();
-            QuestionContent = amq.QText;
-            CorrectAnswer = amq.CorrectAnswer;
-            WrongAnswer1 = amq.Bad1;
-            WrongAnswer2 = amq.Bad2;
-            WrongAnswer3 = amq.Bad3;
-            Dialog = "";
+            Enabled = false;
+            Visible = true;
         }
         public Command WrongCommand { protected set; get; }
-        public async void IfWrongAsync()
+        public void IfWrong()
         {
             //User u = ((App)Application.Current).LoggedInUser;
             Dialog = "Wrong Answer!";
             DialogColor = Colors.Red;
+            Enabled = false;
+            Visible = true;
+        }
+        public Command NextCommand {  protected set; get; }
+        public async void IfNextAsync()
+        {
+            Visible = false;
+            Dialog = "";
             AmericanQuestion amq = await service.GetRandomQuestion();
             QuestionContent = amq.QText;
             CorrectAnswer = amq.CorrectAnswer;
             WrongAnswer1 = amq.Bad1;
             WrongAnswer2 = amq.Bad2;
             WrongAnswer3 = amq.Bad3;
-            Dialog = "";
+            Enabled = true;
         }
     }
 }

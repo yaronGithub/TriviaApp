@@ -24,13 +24,13 @@
         <Label Text="{Binding QuestionContent}" FontSize="Subtitle" FontAttributes="Bold"/>
 
         <StackLayout Orientation="Vertical" x:Name="stackLayout">
-            <Button Text="{Binding CorrectAnswer}" Command="{Binding CorrectCommand}"/>
-            <Button Text="{Binding WrongAnswer1}" Command="{Binding WrongCommand}"/>
-            <Button Text="{Binding WrongAnswer2}" Command="{Binding WrongCommand}"/>
-            <Button Text="{Binding WrongAnswer3}" Command="{Binding WrongCommand}"/>
+            <Button Text="{Binding CorrectAnswer}" Command="{Binding CorrectCommand}" IsEnabled="{Binding Enabled}"/>
+            <Button Text="{Binding WrongAnswer1}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}"/>
+            <Button Text="{Binding WrongAnswer2}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}"/>
+            <Button Text="{Binding WrongAnswer3}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}"/>
         </StackLayout>
 
-        <Button Text="Quit Game!" Command="{Binding QuitGame}"/>
+        <Button Text="Next ->" Command="{Binding NextCommand}" IsVisible="{Binding Visible}"/>
         <Label Text="{Binding Dialog}" TextColor="{Binding DialogColor}"/>
     </VerticalStackLayout>
 </ContentPage>
