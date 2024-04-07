@@ -24,10 +24,10 @@
         <Label Text="{Binding QuestionContent}" FontSize="Subtitle" FontAttributes="Bold"/>
 
         <StackLayout Orientation="Vertical" x:Name="stackLayout">
-            <Button Text="{Binding CorrectAnswer}" Command="{Binding CorrectCommand}" IsEnabled="{Binding Enabled}"/>
-            <Button Text="{Binding WrongAnswer1}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}"/>
-            <Button Text="{Binding WrongAnswer2}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}"/>
-            <Button Text="{Binding WrongAnswer3}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}"/>
+            <Button Text="{Binding CorrectAnswer}" Command="{Binding CorrectCommand}" IsEnabled="{Binding Enabled}" BackgroundColor="{Binding CorrectColor}"/>
+            <Button Text="{Binding WrongAnswer1}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}" BackgroundColor="{Binding W1Color}"/>
+            <Button Text="{Binding WrongAnswer2}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}" BackgroundColor="{Binding W2Color}"/>
+            <Button Text="{Binding WrongAnswer3}" Command="{Binding WrongCommand}" IsEnabled="{Binding Enabled}" BackgroundColor="{Binding W3Color}"/>
         </StackLayout>
 
         <Button Text="Next ->" Command="{Binding NextCommand}" IsVisible="{Binding Visible}"/>

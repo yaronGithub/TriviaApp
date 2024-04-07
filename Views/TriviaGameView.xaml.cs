@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using TriviaAppClean.ViewModels;
 
 namespace TriviaAppClean.Views;
@@ -9,7 +10,7 @@ public partial class TriviaGameView : ContentPage
 		InitializeComponent();
 		this.BindingContext = vm;
         RandomizeChildren();
-	}
+    }
     private void RandomizeChildren()
     {
         var children = stackLayout.Children.ToList();

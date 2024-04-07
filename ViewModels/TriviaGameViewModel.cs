@@ -14,6 +14,10 @@ namespace TriviaAppClean.ViewModels
             this.WrongCommand = new Command(this.IfWrong);
             this.NextCommand = new Command(this.IfNextAsync);
             InitQues();
+            CorrectColor = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W3Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             Enabled = true;
             Visible = false;
             //this.SaveQuestionCommand = new Command(this.SaveQuestion);
@@ -125,6 +129,46 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("DialogColor");
             }
         }
+        private Color correctColor;
+        public Color CorrectColor
+        {
+            get => correctColor;
+            set
+            {
+                correctColor = value;
+                OnPropertyChanged("CorrectColor");
+            }
+        }
+        private Color w1Color;
+        public Color W1Color
+        {
+            get => w1Color;
+            set
+            {
+                w1Color = value;
+                OnPropertyChanged("W1Color");
+            }
+        }
+        private Color w2Color;
+        public Color W2Color
+        {
+            get => w2Color;
+            set
+            {
+                w2Color = value;
+                OnPropertyChanged("W2Color");
+            }
+        }
+        private Color w3Color;
+        public Color W3Color
+        {
+            get => w3Color;
+            set
+            {
+                w3Color = value;
+                OnPropertyChanged("W3Color");
+            }
+        }
         private bool enabled;
         public bool Enabled
         {
@@ -153,6 +197,10 @@ namespace TriviaAppClean.ViewModels
             u.Score += 100;
             Dialog = "Correct Answer!";
             DialogColor = Colors.Green;
+            CorrectColor = Colors.Green;
+            W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             Enabled = false;
             Visible = true;
         }
@@ -162,6 +210,10 @@ namespace TriviaAppClean.ViewModels
             //User u = ((App)Application.Current).LoggedInUser;
             Dialog = "Wrong Answer!";
             DialogColor = Colors.Red;
+            CorrectColor = Colors.Green;
+            W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             Enabled = false;
             Visible = true;
         }
@@ -176,6 +228,7 @@ namespace TriviaAppClean.ViewModels
             WrongAnswer1 = amq.Bad1;
             WrongAnswer2 = amq.Bad2;
             WrongAnswer3 = amq.Bad3;
+            CorrectColor = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             Enabled = true;
         }
     }
