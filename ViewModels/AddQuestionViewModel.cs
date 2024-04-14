@@ -57,11 +57,11 @@ namespace TriviaAppClean.ViewModels
 
         private void ValidateQuestionContent()
         {
-            if (this.questionContent.Length < 10)
-            {
+            //if (this.questionContent.Length < 10)
+            //{
                 this.ShowQuestionContentError = true;
-            }
-            this.ShowQuestionContentError = false;
+            //}
+            //this.ShowQuestionContentError = false;
         }
         #endregion
 
@@ -260,7 +260,7 @@ namespace TriviaAppClean.ViewModels
         public Command SaveQuestionCommand { protected set; get; }
         private async void SaveQuestion()
         {
-            if (ValidateForm())
+            if (!ValidateForm())
             {
                 User u = ((App)Application.Current).LoggedInUser;
                 AmericanQuestion q = new AmericanQuestion()
