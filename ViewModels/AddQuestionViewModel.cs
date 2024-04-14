@@ -273,9 +273,10 @@ namespace TriviaAppClean.ViewModels
                     Status = 0,
                     UserId=u.Id
                 };
-                Application.Current.MainPage.Navigation.PushModalAsync(cs);
+                //הורדנו מכיוון שהעמוד הזה הוא לא MODAL אך עדיין צריך לבדוק שזה עובד ושזאת הבעיה
+               // Application.Current.MainPage.Navigation.PushModalAsync(cs);
                 bool success = await service.PostNewQuestion(q);
-                Application.Current.MainPage.Navigation.PopModalAsync();
+                //Application.Current.MainPage.Navigation.PopModalAsync();
                 
 
                 if (!success)
