@@ -3,18 +3,66 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriviaAppClean.Views.AddQuestionView"
              Title="AddQuestionView">
-    <VerticalStackLayout Padding="10">
-        <Label Text="Add Question:" Margin="5" Style="{StaticResource headingStyle}"/>
-        <Label Text="Question Content"/>
-        <Entry Placeholder="Enter question content..." Text="{Binding QuestionContentError}"/>
-        <Label Text="Correct Answer"/>
-        <Entry Placeholder="Add correct answer" Text="{Binding CorrectAnswerError}"/>
-        <Label Text="Wrong Answer1" />
-        <Entry Placeholder="Add the 1st wrong answer..." Text="{Binding WrongAnswer1Error}"/>
-        <Label Text="Wrong Answer2" />
-        <Entry Placeholder="Add the 2st wrong answer..." Text="{Binding WrongAnswer2Error}"/>
-        <Label Text="Wrong Answer2" />
-        <Entry Placeholder="Add the 2st wrong answer..." Text="{Binding WrongAnswer3Error}"/>
-        <Button Text="Add Question" Command="{Binding SaveQuestionCommand}" Margin="5"></Button>
-    </VerticalStackLayout>
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style x:Key="EnterButton" TargetType="Button">
+				<Setter Property="BackgroundColor"  Value="Green"/>
+				<Setter Property="TextColor" Value="White"/>
+				<Setter Property="FontAttributes" Value="Italic"/>
+				<Setter Property="CornerRadius" Value="15"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<VerticalStackLayout>
+
+		<Label Text="{Binding ErrorComment}"
+               TextColor="Red"
+               IsVisible="{Binding ShowErrorComment}"/>
+
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="*"/>
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="4*"/>
+			</Grid.ColumnDefinitions>
+			<Entry Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
+				Text="{Binding QuestionContent}"
+				Placeholder="Enter your new question content here"/>
+			<Image Grid.Column="0" Grid.Row="1"
+				Source="vimage.png"/>
+			<Entry Grid.Column="1" Grid.Row="1"
+				Text="{Binding CorrectAnswer}"
+				Placeholder="Enter the correct answer here"/>
+			<Image Grid.Column="0" Grid.Row="2"
+				Source="ximage.png"/>
+			<Entry Grid.Column="1" Grid.Row="2"
+				Text="{Binding BadAnswer1}"
+				Placeholder="Enter the first bad answer here"/>
+			<Image Grid.Column="0" Grid.Row="3"
+				Source="ximage.png"/>
+			<Entry Grid.Column="1" Grid.Row="3"
+				Text="{Binding BadAnswer2}"
+				Placeholder="Enter the second bad answer here"/>
+			<Image Grid.Column="0" Grid.Row="4"
+				Source="ximage.png"/>
+			<Entry Grid.Column="1" Grid.Row="4"
+            Text="{Binding BadAnswer3}"
+            Placeholder="Enter the third bad answer here"/>
+
+		</Grid>
+
+		<Button Text="Add Question"
+                Style="{StaticResource EnterButton}"
+                IsEnabled="{Binding IsAddingEnabled}"
+                Command="{Binding AddQuestionCommand}"/>
+
+	</VerticalStackLayout>
+
+
 </ContentPage>
