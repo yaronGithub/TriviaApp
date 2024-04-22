@@ -31,6 +31,7 @@
         </StackLayout>
 
         <Button Text="Next ->" Command="{Binding NextCommand}" IsVisible="{Binding Visible}"/>
+        <Button Text="QUIT" Command="{Binding QuitCommand}"/>
         <Label Text="{Binding Dialog}" TextColor="{Binding DialogColor}"/>
     </VerticalStackLayout>
 </ContentPage>

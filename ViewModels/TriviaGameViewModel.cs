@@ -6,13 +6,15 @@ namespace TriviaAppClean.ViewModels
 {
     public class TriviaGameViewModel : ViewModelBase
     {
+        private ProfileView profileView;
         private TriviaWebAPIProxy service;
-        public TriviaGameViewModel(TriviaWebAPIProxy service)
+        public TriviaGameViewModel(TriviaWebAPIProxy service, ProfileView profileView)
         {
             this.service = service;
             this.CorrectCommand = new Command(this.IfCorrect);
             this.WrongCommand = new Command(this.IfWrong);
             this.NextCommand = new Command(this.IfNextAsync);
+            this.QuitCommand = new Command(this.IfQuit);
             InitQues();
             CorrectColor = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
@@ -20,6 +22,7 @@ namespace TriviaAppClean.ViewModels
             W3Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             Enabled = true;
             Visible = false;
+            this.profileView = profileView;
             //this.SaveQuestionCommand = new Command(this.SaveQuestion);
         }
         private async void InitQues()
@@ -230,6 +233,12 @@ namespace TriviaAppClean.ViewModels
             WrongAnswer3 = amq.Bad3;
             CorrectColor = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             Enabled = true;
+        }
+
+        public Command QuitCommand { protected set; get; }
+        public async void IfQuit()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(profileView);
         }
     }
 }
