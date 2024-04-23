@@ -9,21 +9,25 @@
     <FlyoutItem IsVisible="{Binding IsTrainee}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs3">
         <ShellContent
          Title="Profile" 
+         Icon="profile.jpg"
          ContentTemplate="{DataTemplate views:ProfileView}"
          Route="profile" />
         
         <ShellContent
          Title="Start Game"
+         Icon="game_image.jpg"
          ContentTemplate="{DataTemplate views:TriviaGameView}"
          Route="startGame" />
         
         <ShellContent
          Title="High Scores" 
+         Icon="highscores.jpg"
          ContentTemplate="{DataTemplate views:HighScoresView}"
          Route="highScores" />
         
         <ShellContent
       Title="Add Question"
+      Icon="add_question.jpeg"
       ContentTemplate="{DataTemplate views:AddQuestionView}"
       Route="addQuestion" />
     </FlyoutItem>
@@ -31,27 +35,32 @@
 
     <FlyoutItem IsVisible="{Binding IsMaster}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs2">
         <ShellContent
-    Title="Profile" 
+         Title="Profile" 
+         Icon="profile.jpg"
          ContentTemplate="{DataTemplate views:ProfileView}"
          Route="profile" />
 
         <ShellContent
          Title="Start Game"
+         Icon="game_image.jpg"
          ContentTemplate="{DataTemplate views:TriviaGameView}"
          Route="startGame" />
 
         <ShellContent
          Title="High Scores" 
+         Icon="highscores.jpg"
          ContentTemplate="{DataTemplate views:HighScoresView}"
          Route="highScores" />
 
         <ShellContent
       Title="Add Question"
+      Icon="add_question.jpeg"
       ContentTemplate="{DataTemplate views:AddQuestionView}"
       Route="addQuestion" />
 
         <ShellContent
       Title="Question Approval" 
+      Icon="question_approval.jpg"
       ContentTemplate="{DataTemplate views:QuestionApprovalView}"
       Route="questionApproval" />
     </FlyoutItem>
@@ -62,36 +71,43 @@
         <ShellContent
                 
       Title="Profile" 
+      Icon="profile.jpg"
       ContentTemplate="{DataTemplate views:ProfileView}"
       Route="profile" />
 
         <ShellContent
       Title="Start Game"
+      Icon="game_image.jpg"
       ContentTemplate="{DataTemplate views:TriviaGameView}"
       Route="startGame" />
 
         <ShellContent
       Title="High Scores" 
+      Icon="highscores.jpg"
       ContentTemplate="{DataTemplate views:HighScoresView}"
       Route="highScores" />
 
         <ShellContent
    Title="Add Question"
+   Icon="add_question.jpeg"
    ContentTemplate="{DataTemplate views:AddQuestionView}"
    Route="addQuestion" />
         
         <ShellContent
-      Title="Question Approval" 
+      Title="Question Approval"
+      Icon="question_approval.jpg"
       ContentTemplate="{DataTemplate views:QuestionApprovalView}"
       Route="questionApproval" />
         
         <ShellContent
          Title="Player List" 
+         Icon="player_list.jpg"
    ContentTemplate="{DataTemplate views:PlayerListView}"
    Route="playerList" />
 
         <ShellContent 
             Title="All Questions"
+            Icon="all_questions.jpg"
             ContentTemplate="{DataTemplate views:AllQuestionsView}"
             Route="allQuestions"
             />

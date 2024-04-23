@@ -58,11 +58,11 @@ namespace TriviaAppClean.Services
                             user.Questions = new List<AmericanQuestion>();
                             //now read all questions of that user
                             List<AmericanQuestion> questions = await GetAllQuestions();
-                            foreach (AmericanQuestion question in questions)
-                            {
-                                if (question.UserId == user.Id)
-                                    user.Questions.Add(question);
-                            }
+                            //foreach (AmericanQuestion question in questions)
+                            //{
+                            //    if (question.UserId == user.Id)
+                            //        user.Questions.Add(question);
+                            //}
 
                             return user;
                         }
@@ -321,11 +321,11 @@ namespace TriviaAppClean.Services
                         foreach (User user in u.TheUsers)
                         {
                             user.Questions = new List<AmericanQuestion>();
-                            foreach (AmericanQuestion question in questions)
-                            {
-                                if (user.Id == question.UserId)
-                                    user.Questions.Add(question);
-                            }
+                            //foreach (AmericanQuestion question in questions)
+                            //{
+                            //    if (user.Id == question.UserId)
+                            //        user.Questions.Add(question);
+                            //}
                         }
 
                     }

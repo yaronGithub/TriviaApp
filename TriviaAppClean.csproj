@@ -58,7 +58,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\add_question.jpeg" />
+	  <None Remove="Resources\Images\all_questions.jpg" />
+	  <None Remove="Resources\Images\game_image.jpg" />
+	  <None Remove="Resources\Images\highscores.jpg" />
 	  <None Remove="Resources\Images\Loading.gif" />
+	  <None Remove="Resources\Images\player_list.jpg" />
+	  <None Remove="Resources\Images\profile.jpg" />
+	  <None Remove="Resources\Images\question_approval.jpg" />
 	</ItemGroup>
 
 	<ItemGroup>

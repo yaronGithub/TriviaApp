@@ -38,7 +38,7 @@ namespace TriviaAppClean.ViewModels
         }
 
         private bool isPossible;//is possible to add the question
-        public bool IsisPossible
+        public bool IsPossible
         {
             get
             {
@@ -51,7 +51,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private bool IsAccesAproove()//do the user can have acces to add question
+        private bool IsAccessApprove()//do the user can have acces to add question
         {
             if (((App)Application.Current).LoggedInUser.Rank == 2)
             {
@@ -147,9 +147,9 @@ namespace TriviaAppClean.ViewModels
             this.triviaService = service;
             this.connectingToServerView = connect;
             this.IfIncorrect = "Only mangers can add new questions and for every 100 points you are earning you cant addd a new question !";
-            this.ShowIfIncorrect = IsAccesAproove();
-            this.isPossible = IsAccesAproove();
-            this.AddQuestionCommand = new Command(OnAddQuestion);
+            this.ShowIfIncorrect = IsAccessApprove();
+            this.IsPossible = IsAccessApprove();
+            this.CompleteAddingCommand = new Command(OnAddQuestion);
         }
 
         public ICommand CompleteAddingCommand { get; set; }//Adding the new question to the server
@@ -170,9 +170,9 @@ namespace TriviaAppClean.ViewModels
 
             if (a == true)
             {
-                await Shell.Current.DisplayAlert("Add Qustion", "Question  add to the game was successfull !", "ok");
-                this.ShowIfIncorrect = IsAccesAproove();
-                this.isPossible = IsAccesAproove();
+                await Shell.Current.DisplayAlert("Add Qustion", "Question  add to the game was successfull!", "ok");
+                this.ShowIfIncorrect = IsAccessApprove();
+                this.isPossible = IsAccessApprove();
                 this.QuestionContent = "";
                 this.CorrectAnswer = "";
                 this.BadAnswer1 = "";

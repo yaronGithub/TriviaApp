@@ -6,7 +6,7 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style x:Key="EnterButton" TargetType="Button">
-				<Setter Property="BackgroundColor"  Value="Purple"/>
+				<Setter Property="BackgroundColor"  Value="MediumPurple"/>
 				<Setter Property="TextColor" Value="White"/>
 				<Setter Property="FontAttributes" Value="Italic"/>
 				<Setter Property="CornerRadius" Value="15"/>
@@ -22,7 +22,7 @@
 			<Label Text="Add Question:" Margin="5" Style="{StaticResource headingStyle}"/>
 		
 			<Label Text="Question Content"/>
-			<Entry Placeholder="Enter question content..." Text="{Binding QuestionContent}"/>
+			<Entry Placeholder="Enter question..." Text="{Binding QuestionContent}"/>
 		
 			<Label Text="Correct Answer"/>
 			<Entry Placeholder="Add correct answer" Text="{Binding CorrectAnswer}"/>
@@ -31,14 +31,14 @@
 			<Entry Placeholder="Add the 1st wrong answer..." Text="{Binding BadAnswer1}"/>
 		
 			<Label Text="Wrong Answer2" />
-			<Entry Placeholder="Add the 2st wrong answer..." Text="{Binding BadAnswer2}"/>
+			<Entry Placeholder="Add the 2nd wrong answer..." Text="{Binding BadAnswer2}"/>
 		
 			<Label Text="Wrong Answer3" />
-			<Entry Placeholder="Add the 2st wrong answer..." Text="{Binding BadAnswer3}"/>
+			<Entry Placeholder="Add the 3rd wrong answer..." Text="{Binding BadAnswer3}"/>
         
 		        <Button Text="Add Question"
                 Style="{StaticResource EnterButton}"
-                IsEnabled="{Binding isPossible}"
+                IsEnabled="{Binding IsPossible}"
                 Command="{Binding CompleteAddingCommand}"/>
 
 	</VerticalStackLayout>
