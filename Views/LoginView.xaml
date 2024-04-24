@@ -24,7 +24,8 @@
         <Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" Style="{StaticResource errorLabel}"/>
         <Label Text="Password" />
         <Entry Placeholder="Enter password..." Text="{Binding Password}" IsPassword="True"/>
-        <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Style="{StaticResource errorLabel}"/>
+        <Label Text="{Binding PasswordError}"  IsVisible="{Binding ShowPasswordError}" Style="{StaticResource errorLabel}"/>
+      
         <Button Text="Log in" Command="{Binding LoginCommand}" Margin="5"></Button>
         
         <Button Text="Don't have an account? Sign up" Command="{Binding GoToSignUpCommand}"/>

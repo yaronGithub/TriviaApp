@@ -15,9 +15,7 @@
 	</ContentPage.Resources>
 	<VerticalStackLayout>
 
-		<Label Text="{Binding IfIncorrect}"
-               TextColor="Red"
-               IsVisible="{Binding ShowIfIncorrect}"/>
+		
 		
 			<Label Text="Add Question:" Margin="5" Style="{StaticResource headingStyle}"/>
 		
@@ -27,16 +25,20 @@
 			<Label Text="Correct Answer"/>
 			<Entry Placeholder="Add correct answer" Text="{Binding CorrectAnswer}"/>
 		
-			<Label Text="Wrong Answer1" />
+			<Label Text="Wrong Answer 1" />
 			<Entry Placeholder="Add the 1st wrong answer..." Text="{Binding BadAnswer1}"/>
 		
-			<Label Text="Wrong Answer2" />
+			<Label Text="Wrong Answer 2" />
 			<Entry Placeholder="Add the 2nd wrong answer..." Text="{Binding BadAnswer2}"/>
 		
-			<Label Text="Wrong Answer3" />
+			<Label Text="Wrong Answer 3" />
 			<Entry Placeholder="Add the 3rd wrong answer..." Text="{Binding BadAnswer3}"/>
         
-		        <Button Text="Add Question"
+        <Label Text="{Binding IfIncorrect}"
+       TextColor="Red"
+       IsVisible="{Binding ShowIfIncorrect}"/>
+		        
+        <Button Text="Add Question"
                 Style="{StaticResource EnterButton}"
                 IsEnabled="{Binding IsPossible}"
                 Command="{Binding CompleteAddingCommand}"/>

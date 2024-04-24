@@ -320,7 +320,7 @@ namespace TriviaAppClean.Services
                         List<AmericanQuestion> questions = await GetAllQuestions();
                         foreach (User user in u.TheUsers)
                         {
-                            user.Questions = new List<AmericanQuestion>();
+                            //user.Questions = new List<AmericanQuestion>();
                             //foreach (AmericanQuestion question in questions)
                             //{
                             //    if (user.Id == question.UserId)

@@ -15,6 +15,9 @@ namespace TriviaAppClean.ViewModels
             this.cs = cs;
             this.service = service;
             this.SaveDataCommand = new Command(this.SaveData);
+            this.NameError = "Must enter name";
+            this.EmailError = "Must enter correct email";
+            this.PasswordError = "Must enter password";
         }
 
         //private void Example()

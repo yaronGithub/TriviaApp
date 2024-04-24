@@ -20,11 +20,13 @@ namespace TriviaAppClean.ViewModels
             this.GoToSignUpCommand =  new Command(GoSignUp);
             this.signUpView = signUpView;
             this.connectingToServerView = connectingToServerView;
+            this.EmailError = "Must enter correct email";
+            this.PasswordError = "Must enter password";
         }
         public ICommand LoginCommand { get; set; }
         private async void OnLogin()
         {
-            if (ShowEmailError || showPasswordError)
+            if (ShowEmailError || ShowPasswordError)
             {
                 //await Shell.Current.DisplayAlert("Validation", "you have some errors!", "ok");
                 if (ShowEmailError)
@@ -55,7 +57,7 @@ namespace TriviaAppClean.ViewModels
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeed!", "ok");
+                await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeeded!", "ok");
                 u.Score = 10;
                 ShellViewModel shellVM = (ShellViewModel)shell.BindingContext;
                 shellVM.RefreshProperties();
