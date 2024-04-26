@@ -251,6 +251,7 @@ namespace TriviaAppClean.ViewModels
         {
             //await Shell.Current.GoToAsync("ProfileView");
             await Shell.Current.GoToAsync($"{nameof(ProfileView)}");
+            //await Shell.Current.Navigation.PopAsync();
         }
     }
 }
