@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Intrinsics.X86;
+using System.Windows.Input;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
 using TriviaAppClean.Views;
@@ -13,7 +14,8 @@ namespace TriviaAppClean.ViewModels
         {
             this.service = service;
             this.CorrectCommand = new Command(this.IfCorrect);
-            this.WrongCommand = new Command(this.IfWrong);
+            //this.WrongCommand = new Command(this.IfWrong);
+            this.WrongCommand = new Command<string>(this.IfWrong);
             this.NextCommand = new Command(this.IfNextAsync);
             this.QuitCommand = new Command(this.IfQuit);
             InitQues();
@@ -208,7 +210,9 @@ namespace TriviaAppClean.ViewModels
             Enabled = false;
             Visible = true;
         }
-        public Command WrongCommand { protected set; get; }
+        //public Command WrongCommand { protected set; get; }
+        //public Command WrongCommand { protected set; get; }
+        public ICommand WrongCommand { get; }
         public void IfWrong(string w)
         {
             //User u = ((App)Application.Current).LoggedInUser;
@@ -218,7 +222,9 @@ namespace TriviaAppClean.ViewModels
             W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
-            
+            if (w == "w1") { W1Color = Colors.Red; }
+            else if (w == "w2") { W2Color = Colors.Red; }
+            else if (w == "w3") { W3Color = Colors.Red; }
             Enabled = false;
             Visible = true;
         }
@@ -233,6 +239,9 @@ namespace TriviaAppClean.ViewModels
             WrongAnswer1 = amq.Bad1;
             WrongAnswer2 = amq.Bad2;
             WrongAnswer3 = amq.Bad3;
+            W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            W3Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             CorrectColor = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             Enabled = true;
         }
