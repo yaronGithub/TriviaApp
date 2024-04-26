@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using TriviaAppClean.ViewModels;
 
 namespace TriviaAppClean.Views;

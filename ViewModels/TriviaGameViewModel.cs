@@ -1,4 +1,5 @@
-﻿using TriviaAppClean.Models;
+﻿using System.Runtime.Intrinsics.X86;
+using TriviaAppClean.Models;
 using TriviaAppClean.Services;
 using TriviaAppClean.Views;
 
@@ -208,7 +209,7 @@ namespace TriviaAppClean.ViewModels
             Visible = true;
         }
         public Command WrongCommand { protected set; get; }
-        public void IfWrong()
+        public void IfWrong(string w)
         {
             //User u = ((App)Application.Current).LoggedInUser;
             Dialog = "Wrong Answer!";
@@ -217,6 +218,7 @@ namespace TriviaAppClean.ViewModels
             W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
             W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1);
+            
             Enabled = false;
             Visible = true;
         }
@@ -238,7 +240,7 @@ namespace TriviaAppClean.ViewModels
         public Command QuitCommand { protected set; get; }
         public async void IfQuit()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(profileView);
+            await Shell.Current.GoToAsync("ProfileView");
         }
     }
 }

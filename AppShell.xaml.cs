@@ -17,6 +17,7 @@ public partial class AppShell : Shell
 	{
         Routing.RegisterRoute("userDetails", typeof(PlayerDetailsView));
         Routing.RegisterRoute("connectingToServer", typeof(ConnectingToServerView));
+        Routing.RegisterRoute(nameof(ProfileView), typeof(ProfileView));
     }
 
     protected override void OnAppearing()
