@@ -249,7 +249,8 @@ namespace TriviaAppClean.ViewModels
         public Command QuitCommand { protected set; get; }
         public async void IfQuit()
         {
-            await Shell.Current.GoToAsync("ProfileView");
+            //await Shell.Current.GoToAsync("ProfileView");
+            await Shell.Current.GoToAsync($"{nameof(ProfileView)}");
         }
     }
 }
