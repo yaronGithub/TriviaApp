@@ -28,16 +28,8 @@ namespace TriviaAppClean.ViewModels
         {
             if (ShowEmailError || ShowPasswordError)
             {
-                //await Shell.Current.DisplayAlert("Validation", "you have some errors!", "ok");
-                if (ShowEmailError)
-                {
-                    EmailError = "email wrong";
-                }
-                if (ShowPasswordError)
-                {
-                    PasswordError = "Password error";
-                }
-                
+                await Application.Current.MainPage.DisplayAlert("Login", $"יש בעיה עם הנתונים", "ok");
+                return;
             }
             //Choose the way you want to blobk the page while indicating a server call
             InServerCall=true;
@@ -52,13 +44,12 @@ namespace TriviaAppClean.ViewModels
             ((App)Application.Current).LoggedInUser = u;
             if (u == null)
             {
-                
                 await Application.Current.MainPage.DisplayAlert("Login", "Login Failed!", "ok");
             }
             else
             {
                 await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeeded!", "ok");
-                u.Score = 10;
+                //u.Score = 10;
                 ShellViewModel shellVM = (ShellViewModel)shell.BindingContext;
                 shellVM.RefreshProperties();
                 Application.Current.MainPage = shell;
@@ -105,8 +96,8 @@ namespace TriviaAppClean.ViewModels
             set
             {
                 email = value;
-                ValidateEmail();
                 OnPropertyChanged("Email");
+                ValidateEmail();
             }
         }
 
@@ -122,7 +113,8 @@ namespace TriviaAppClean.ViewModels
         }
         private void ValidateEmail()
         {
-            this.ShowEmailError = (string.IsNullOrEmpty(Email) || Email.Length < 5);
+            this.ShowEmailError = (string.IsNullOrEmpty(Email) || Email.Length < 5 || !Email.Contains('@'));
+            EmailError = "Invalid Email";
         }
         private bool showPasswordError;
         public bool ShowPasswordError
@@ -142,6 +134,7 @@ namespace TriviaAppClean.ViewModels
             {
                 password = value;
                 OnPropertyChanged("Password");
+                ValidatePassword();
             }
         }
         private string passwordError;
@@ -157,6 +150,7 @@ namespace TriviaAppClean.ViewModels
         private void ValidatePassword()
         {
             this.ShowPasswordError = (string.IsNullOrEmpty(Password) || Password.Length < 4);
+            PasswordError = "Invalid Password";
         }
         public ICommand GoToSignUpCommand { get; set; } 
         async void GoSignUp()
