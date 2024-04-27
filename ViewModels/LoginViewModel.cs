@@ -20,13 +20,11 @@ namespace TriviaAppClean.ViewModels
             this.GoToSignUpCommand =  new Command(GoSignUp);
             this.signUpView = signUpView;
             this.connectingToServerView = connectingToServerView;
-            this.EmailError = "Must enter correct email";
-            this.PasswordError = "Must enter password";
         }
         public ICommand LoginCommand { get; set; }
         private async void OnLogin()
         {
-            if (ShowEmailError || ShowPasswordError)
+            if (ShowEmailError || ShowPasswordError || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
             {
                 await Application.Current.MainPage.DisplayAlert("Login", $"יש בעיה עם הנתונים", "ok");
                 return;
