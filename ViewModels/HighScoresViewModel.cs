@@ -21,12 +21,12 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged();
             }
         }
-        private void SortUsersByScoreDescending(List<User> userList)
+        private void SortUsersByScoreDescending(List<User> userList)//sorts the users from the highest to the lowest score
         {
             userList.Sort((user1, user2) => user2.Score.CompareTo(user1.Score));
         }
         private TriviaWebAPIProxy usersService;
-        public HighScoresViewModel(TriviaWebAPIProxy service)
+        public HighScoresViewModel(TriviaWebAPIProxy service)//the building function
         {
             this.usersService = service;
             users = new ObservableCollection<User>();
@@ -35,7 +35,7 @@ namespace TriviaAppClean.ViewModels
         }
 
         private List<User> list;
-        private async void ReadUsers()
+        private async void ReadUsers()//function thagt reads the users
         {
             TriviaWebAPIProxy service = this.usersService;
             list = await service.GetAllUsers();
@@ -43,7 +43,7 @@ namespace TriviaAppClean.ViewModels
             FilterUsers();
         }
 
-        private void FilterUsers()
+        private void FilterUsers()//function that filtters the users based on their scores and checking if there are already exist
         {
             SortUsersByScoreDescending(list);
             if (UserName == null || String.IsNullOrEmpty(UserName))
@@ -57,7 +57,7 @@ namespace TriviaAppClean.ViewModels
             {
                 if (u.Name.Contains(UserName))
                 {
-                    Users.Add(u);
+                    Users.Add(u);//adding the user
                 }
             }
             Users = Users;

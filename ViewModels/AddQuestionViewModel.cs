@@ -10,7 +10,7 @@ namespace TriviaAppClean.ViewModels
 {
     public class AddQuestionViewModel:ViewModelBase
     {
-        private string ifIncorrect;
+        private string ifIncorrect;//if some fild is incorrect than it becomes not null
         public string IfIncorrect
         {
             get
@@ -24,7 +24,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private bool showifIncorrect;
+        private bool showifIncorrect;//is there need to show incorrect
         public bool ShowIfIncorrect
         {
             get
@@ -66,7 +66,7 @@ namespace TriviaAppClean.ViewModels
         }
 
 
-        private string questionContent;
+        private string questionContent;//getting the question content filled into the string
         public string QuestionContent
         {
             get
@@ -80,7 +80,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string correctAnswer;
+        private string correctAnswer;//getting the correct answer filled into the string
         public string CorrectAnswer
         {
             get
@@ -94,7 +94,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string badAnswer1;
+        private string badAnswer1;//getting the first wrong answer filled into the string
         public string BadAnswer1
         {
             get
@@ -108,7 +108,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string badAnswer2;
+        private string badAnswer2;//getting the second wrong answer filled into the string
         public string BadAnswer2
         {
             get
@@ -122,7 +122,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string badAnswer3;
+        private string badAnswer3;//getting the third wrong answer filled into the string
         public string BadAnswer3
         {
             get
@@ -138,7 +138,7 @@ namespace TriviaAppClean.ViewModels
 
         private TriviaWebAPIProxy triviaService;
         private ConnectingToServerView connectingToServerView;
-        public AddQuestionViewModel(TriviaWebAPIProxy service, ConnectingToServerView connect)
+        public AddQuestionViewModel(TriviaWebAPIProxy service, ConnectingToServerView connect)//the building function
         {
             this.triviaService = service;
             this.connectingToServerView = connect;
@@ -148,7 +148,7 @@ namespace TriviaAppClean.ViewModels
             this.CompleteAddingCommand = new Command(OnAddQuestion);
         }
 
-        private bool ValidateForm()
+        private bool ValidateForm()//making sure that all form filds are full
         {
             //Validate all fields first
            if(string.IsNullOrEmpty(QuestionContent)==false && string.IsNullOrEmpty(CorrectAnswer)==false && string.IsNullOrEmpty(BadAnswer1)==false && string.IsNullOrEmpty(BadAnswer2)==false && string.IsNullOrEmpty(BadAnswer3)==false)
@@ -169,27 +169,28 @@ namespace TriviaAppClean.ViewModels
 
         private async void OnAddQuestion()
         {
-            if (ValidateForm())
+            if (ValidateForm())//if the function returns true
             {
-                AmericanQuestion quest = new AmericanQuestion();
+                AmericanQuestion quest = new AmericanQuestion();//creating a new empty question
+                //filling the filds based on what the user enterd
                 quest.QText = questionContent;
                 quest.CorrectAnswer = correctAnswer;
                 quest.Bad1 = badAnswer1;
                 quest.Bad2 = badAnswer2;
                 quest.Bad3 = badAnswer3;
                 quest.UserId = ((App)Application.Current).LoggedInUser.Id;
-                if (((App)Application.Current).LoggedInUser.Rank == 2) { quest.Status = 1; }
-                else
+                if (((App)Application.Current).LoggedInUser.Rank == 2) { quest.Status = 1; }//if the user is manger the question is automaticlly approved
+                else//if not the question status is waiting for approvel
                 {
                     quest.Status = 0;
                 }
-                if (IsAccessApprove())
+                if (IsAccessApprove())//if the user have access
                 {
                     await Shell.Current.Navigation.PushModalAsync(connectingToServerView);
                     bool a = await this.triviaService.PostNewQuestion(quest);
                     await Shell.Current.Navigation.PopModalAsync();
 
-                    if (a == true)
+                    if (a == true)//if the question was added
                     {
                         await Shell.Current.DisplayAlert("Add Qustion", "Question add to the game was successfull!", "ok");
                         this.ShowIfIncorrect = IsAccessApprove();
@@ -200,17 +201,17 @@ namespace TriviaAppClean.ViewModels
                         this.BadAnswer2 = "";
                         this.BadAnswer3 = "";
                     }
-                    else
+                    else//the user do have access but the adding was faill
                     {
                         await Shell.Current.DisplayAlert("Add Qustion", "Question add failed", "ok");
                     }
                 }
-                else
+                else//the user dont have the rank to add question
                 {
                     await Shell.Current.DisplayAlert("Add Qustion", "Cannot add question yet", "ok");
                 }
             }
-            else
+            else//some of the filds are incorrect
             {
                 await App.Current.MainPage.DisplayAlert("Add Question", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
             }

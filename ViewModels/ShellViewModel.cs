@@ -12,7 +12,7 @@ namespace TriviaAppClean.ViewModels
 
         
         
-        public bool IsAdmin
+        public bool IsAdmin//checks if the user is admin
         {
             get
             {
@@ -28,7 +28,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        public bool IsMaster
+        public bool IsMaster//checks if user is master
         {
             get
             {
@@ -43,7 +43,7 @@ namespace TriviaAppClean.ViewModels
                 return false;
             }
         }
-        public bool IsTrainee
+        public bool IsTrainee//checks if user is trainee
         {
             get
             {

@@ -10,7 +10,7 @@ namespace TriviaAppClean.ViewModels
         private ConnectingToServerView cs;
         // ICommand SignUpCommand = new Command();
         private TriviaWebAPIProxy service;
-        public SignUpViewModel(TriviaWebAPIProxy service, ConnectingToServerView cs)
+        public SignUpViewModel(TriviaWebAPIProxy service, ConnectingToServerView cs)//the building function
         {
             this.cs = cs;
             this.service = service;
@@ -24,7 +24,7 @@ namespace TriviaAppClean.ViewModels
         //{
         //    //Application.Current.MainPage.Navigation.PushAsync(new SignUpView);
         //}
-
+        //all name properties
         #region שם
         private bool showNameError;
 
@@ -69,7 +69,7 @@ namespace TriviaAppClean.ViewModels
         }
         #endregion
 
-
+        //all email properties
         #region אימייל
         private bool showEmailError;
 
@@ -116,7 +116,7 @@ namespace TriviaAppClean.ViewModels
             
         }
         #endregion
-
+        //all password properties
         #region סיסמה
         private bool showPasswordError;
 
@@ -162,7 +162,7 @@ namespace TriviaAppClean.ViewModels
         }
 
         #endregion
-        private bool ValidateForm()
+        private bool ValidateForm()//validate the form
         {
             //Validate all fields first
             ValidateEmail();
@@ -175,11 +175,11 @@ namespace TriviaAppClean.ViewModels
             return true;
         }
         public Command SaveDataCommand { protected set; get; }
-        private async void SaveData()
+        private async void SaveData()//saves the new user
         {
-            if (ValidateForm())
+            if (ValidateForm())//if all filds are not null and ok
             {
-                User user = new User()
+                User user = new User()//creating new user
                 {
                     Name = this.Name,
                     Email = this.Email,
@@ -188,17 +188,17 @@ namespace TriviaAppClean.ViewModels
                 Application.Current.MainPage.Navigation.PushModalAsync(cs);
                 bool success = await service.RegisterUser(user);
                 Application.Current.MainPage.Navigation.PopModalAsync();
-                if (!success)
+                if (!success)//if the adding wasnt successfull
                 {
-                    await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
+                    await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows the message
                 }
                 else
                 {
                     await Application.Current.MainPage.Navigation.PopAsync();
                 }
             }
-            else
-                await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
+            else//if there are filds that are null or not ok
+                await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows the message
 
         }
     }

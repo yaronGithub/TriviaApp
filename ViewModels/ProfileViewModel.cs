@@ -10,23 +10,23 @@ namespace TriviaAppClean.ViewModels
 
         public ProfileViewModel(TriviaWebAPIProxy service)
         {
-            User u = ((App)Application.Current).LoggedInUser;
-
+            User u = ((App)Application.Current).LoggedInUser;//getting the current user using the game
+            //fill the correct filds
             this.service = service;
             this.SaveProfileCommand = new Command(this.SaveProfile);
             Email = u.Email;
             Name = u.Name;
             Password = u.Password;
             Score = u.Score;
-            List<Rank> ranks = service.GetRanks();
-            Rank = ranks.Where(r => r.Id == u.Rank).First().Name;
+            List<Rank> ranks = service.GetRanks();//getting the user rank list
+            Rank = ranks.Where(r => r.Id == u.Rank).First().Name;//getting the user rank from the list
             this.NameError = "זהו שדה חובה";
             this.PasswordError = "זהו שדה חובה";
             this.EmailError = "זהו שדה חובה";
 
         }
 
-
+        //all name properties
         #region שם
         private bool showNameError;
 
@@ -69,11 +69,11 @@ namespace TriviaAppClean.ViewModels
             {
                 this.ShowNameError = string.IsNullOrEmpty(Name);
             }
-            #endregion
+        #endregion
 
-
-            #region אימייל
-            private bool showEmailError;
+        //all email properties
+        #region אימייל
+        private bool showEmailError;
 
             public bool ShowEmailError
             {
@@ -117,10 +117,10 @@ namespace TriviaAppClean.ViewModels
                 this.ShowEmailError = !regex.IsMatch(email);
 
             }
-            #endregion
-
-            #region סיסמה
-            private bool showPasswordError;
+        #endregion
+        //all password properties
+        #region סיסמה
+        private bool showPasswordError;
 
             public bool ShowPasswordError
             {
@@ -164,7 +164,7 @@ namespace TriviaAppClean.ViewModels
             }
 
             #endregion
-            private bool ValidateForm()
+            private bool ValidateForm()//validate the form
             {
                 //Validate all fields first
                 ValidateEmail();
@@ -177,11 +177,11 @@ namespace TriviaAppClean.ViewModels
                 return true;
             }
             public Command SaveProfileCommand { protected set; get; }
-            private async void SaveProfile()
+            private async void SaveProfile()//saves the changes
             {
-                if (ValidateForm())
+                if (ValidateForm())//if all filds are not null
                 {
-                    User user = new User()
+                    User user = new User()//set the user filds
                     {
                         Name = this.Name,
                         Email = this.Email,
@@ -189,22 +189,23 @@ namespace TriviaAppClean.ViewModels
                     };
                 await Shell.Current.GoToAsync("connectingToServer");
 
-                    bool success = await service.UpdateUser(user);
+                    bool success = await service.UpdateUser(user);//true if the user set false else
 
                 await Shell.Current.Navigation.PopModalAsync();
-                    if (!success)
+                    if (!success)//if the user set faild
                     {
-                        await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
+                        await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows a message
                     }
                     else
                     {
                         await Application.Current.MainPage.Navigation.PopAsync();
                     }
                 }
-                else
-                    await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
+                else//if there are problem with one or more of the filds
+                    await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows a message
 
             }
+        //all points properties
             #region נקודות
         private int score;
         public int Score
@@ -216,8 +217,8 @@ namespace TriviaAppClean.ViewModels
             }
         }
         #endregion
-
-            #region דרגה
+        //all rank properties
+        #region דרגה
         private string rank;
         public string Rank
         {

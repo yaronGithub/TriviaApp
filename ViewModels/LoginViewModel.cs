@@ -11,7 +11,7 @@ namespace TriviaAppClean.ViewModels
         private AppShell shell;
         private SignUpView signUpView;
         private ConnectingToServerView connectingToServerView;
-        public LoginViewModel(TriviaWebAPIProxy service, AppShell shell, SignUpView signUpView, ConnectingToServerView connectingToServerView) 
+        public LoginViewModel(TriviaWebAPIProxy service, AppShell shell, SignUpView signUpView, ConnectingToServerView connectingToServerView) //the building function
         {
             this.shell = shell;
             InServerCall = false;
@@ -24,16 +24,16 @@ namespace TriviaAppClean.ViewModels
         public ICommand LoginCommand { get; set; }
         private async void OnLogin()
         {
-            if (ShowEmailError || ShowPasswordError || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))
+            if (ShowEmailError || ShowPasswordError || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))//if theres an error
             {
-                await Application.Current.MainPage.DisplayAlert("Login", $"יש בעיה עם הנתונים", "ok");
+                await Application.Current.MainPage.DisplayAlert("Login", $"יש בעיה עם הנתונים", "ok");//shows the message
                 return;
             }
             //Choose the way you want to blobk the page while indicating a server call
             InServerCall=true;
             //await Shell.Current.GoToAsync("connectingToServer");
-            await Application.Current.MainPage.Navigation.PushModalAsync(connectingToServerView);
-            User u  = await this.triviaService.LoginAsync(Email, Password);
+            await Application.Current.MainPage.Navigation.PushModalAsync(connectingToServerView);//while connecting to the server shows the user the animation
+            User u  = await this.triviaService.LoginAsync(Email, Password);//checking if the user exist return null if not exict
             await Application.Current.MainPage.Navigation.PopModalAsync();
             //await Shell.Current.Navigation.PopModalAsync();
             InServerCall = false;
@@ -42,11 +42,11 @@ namespace TriviaAppClean.ViewModels
             ((App)Application.Current).LoggedInUser = u;
             if (u == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Login", "Login Failed!", "ok");
+                await Application.Current.MainPage.DisplayAlert("Login", "Login Failed!", "ok");//if the check returnd null means that the user dont exist shows a message
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeeded!", "ok");
+                await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeeded!", "ok");//if the check returnd not null means that the user exist shows a message
                 //u.Score = 10;
                 ShellViewModel shellVM = (ShellViewModel)shell.BindingContext;
                 shellVM.RefreshProperties();
@@ -54,7 +54,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private bool inServerCall;
+        private bool inServerCall;//is somthing calls to the server
         public bool InServerCall
         {
             get
@@ -69,7 +69,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        public bool NotInServerCall
+        public bool NotInServerCall//not calls the server
         {
             get
             {
@@ -109,7 +109,7 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("EmailError");
             }
         }
-        private void ValidateEmail()
+        private void ValidateEmail()//validate if the email fild is not empty longer than 5 chars and contains @
         {
             this.ShowEmailError = (string.IsNullOrEmpty(Email) || Email.Length < 5 || !Email.Contains('@'));
             EmailError = "Invalid Email";
@@ -145,16 +145,16 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("PasswordError");
             }
         }
-        private void ValidatePassword()
+        private void ValidatePassword()//validate if the password fild is full and there are more the 4 chars in it
         {
             this.ShowPasswordError = (string.IsNullOrEmpty(Password) || Password.Length < 4);
             PasswordError = "Invalid Password";
         }
-        public ICommand GoToSignUpCommand { get; set; } 
+        public ICommand GoToSignUpCommand { get; set; } //command for users that didnt sign up yet
         async void GoSignUp()
         {
 
-            await Application.Current.MainPage.Navigation.PushAsync(signUpView);
+            await Application.Current.MainPage.Navigation.PushAsync(signUpView);//open the sign up view
             //await Shell.Current.GoToAsync("//Views/SignUpView");
         }
     }

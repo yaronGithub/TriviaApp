@@ -21,13 +21,13 @@ namespace TriviaAppClean.ViewModels
             }
         }
         private TriviaWebAPIProxy usersService;
-        public PlayerListViewModel(TriviaWebAPIProxy service)
+        public PlayerListViewModel(TriviaWebAPIProxy service)//the building function
         {
             this.usersService = service;
             users = new ObservableCollection<User>();
             ReadUsers();
         }
-        private async void ReadUsers()
+        private async void ReadUsers()//read the users from the server
         {
             TriviaWebAPIProxy service = this.usersService;
             List<User> list = await service.GetAllUsers();

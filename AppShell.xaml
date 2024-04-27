@@ -7,7 +7,7 @@
     Shell.FlyoutBehavior="Flyout">
     
     <FlyoutItem IsVisible="{Binding IsTrainee}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs3">
-        <ShellContent
+		<ShellContent
          Title="Profile" 
          Icon="profile.jpg"
          ContentTemplate="{DataTemplate views:ProfileView}"
