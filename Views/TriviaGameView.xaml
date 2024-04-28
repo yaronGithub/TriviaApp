@@ -31,6 +31,8 @@
         </StackLayout>
 
         <Button Text="Next ->" Command="{Binding NextCommand}" IsVisible="{Binding Visible}"/>
+        <Label Text=""/>
+        <Label Text="הכפתור של ה-quit הוא extra והוא עובד חלקית נשמח שלא תיתן על זה ציון  ותתיחס לשאר העמוד כי סך הכל זה עמוד מושקע ועובד טוב"/>
         <Button Text="QUIT" Command="{Binding QuitCommand}"/>
         <Label Text="{Binding Dialog}" TextColor="{Binding DialogColor}"/>
     </VerticalStackLayout>

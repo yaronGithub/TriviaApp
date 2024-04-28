@@ -1,4 +1,5 @@
-﻿using System.Runtime.Intrinsics.X86;
+﻿using Microsoft.Maui.Controls;
+using System.Runtime.Intrinsics.X86;
 using System.Windows.Input;
 using TriviaAppClean.Models;
 using TriviaAppClean.Services;
@@ -263,7 +264,8 @@ namespace TriviaAppClean.ViewModels
              * If the quit button is clicked than this method is called.
              * This method navigates to a different page.
              */
-            await Shell.Current.GoToAsync($"{nameof(ProfileView)}"); // Navigating
+            //MessagingCenter.Send(this, "ChangeTab", "Profile");
+            await Shell.Current.GoToAsync($"//tabs1/{nameof(ProfileView)}"); // Navigating
         }
     }
 }

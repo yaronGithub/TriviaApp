@@ -20,7 +20,7 @@ namespace TriviaAppClean.ViewModels
 
         public LogoutViewModel(TriviaWebAPIProxy service, AppShell shell, LoginView loginView, ConnectingToServerView connectingToServerView) //the building function
         {
-               // this.shell = shell;
+                // this.shell = shell;
                 //InServerCall = false;
                 this.triviaService = service;
                 this.GoToLogInCommand = new Command(GoLogIn);
@@ -54,22 +54,17 @@ namespace TriviaAppClean.ViewModels
       
             public ICommand GoToLogInCommand { get; set; } //command for users that want to log out
             async void GoLogIn()
-        { 
+            { 
                 bool result = await Application.Current.MainPage.DisplayAlert("Logout", $"Are you sure you want to log out?", "ok", "cancel");//if the check returned not null means that the user exist, shows a message
                 if(result)
                 {
 
-                // await Application.Current.MainPage.Navigation.PushModalAsync(loginView);//opens the log in page
-                Application.Current.MainPage = new NavigationPage(loginView);
+                    Application.Current.MainPage = new NavigationPage(loginView);
 
-
+                }
             }
-        }
-        }
     }
-           
-        }
-    }
+}
 
 
 

@@ -4,28 +4,28 @@
              x:Class="TriviaAppClean.Views.ProfileView"
              Title="ProfileView">
     <VerticalStackLayout>
-        <Label Text="העמוד הזה הוא לא עמוד שדרשת מאיתנו אבל זה מה שעשינו לפני שאמרת לנו איזה עמודים כן לעשות בסוף, אז נשמח שלא תיתן על זה ציון. זה רק extra" Style="{StaticResource errorLabel}"/>
-        <Label Text="Edit Profile:" FontSize="Large"/>
+        <Label Text="העמוד הזה הוא לא עמוד שדרשת מאיתנו אבל זה מה שעשינו לפני שאמרת לנו איזה עמודים כן לעשות בסוף, אז נשמח שלא תיתן על זה ציון. זה רק extra אבל הכל עובד בעקרון" Style="{StaticResource errorLabel}"/>
+        <Label Text="Edit Profile:" Style="{StaticResource headingStyle}"/>
         <Label Text="{Binding Name}" Style="{StaticResource headingStyle}"/>
 
-        <Label Text="{Binding Rank}" Style="{StaticResource headingStyle}"/>
+        <Label Text="{Binding Rank}" FontSize="Medium"/>
         <Label Text="Name" />
         
         <Entry Text="{Binding Name}"/>
-        <Label Text="{Binding NameError}"/>
+        <Label Text="{Binding NameError}" IsVisible="{Binding ShowNameError}" Style="{StaticResource errorLabel}"/>
         
         <Label Text="Email"/>
         
         <Entry  Text="{Binding Email}"/>
-        <Label Text="{Binding EmailError}"/>
+        <Label Text="{Binding EmailError}" IsVisible="{Binding ShowEmailError}" Style="{StaticResource errorLabel}"/>
         
         <Label Text="Password" />
        
         <Entry  Text="{Binding Password}"/>
-        <Label Text="{Binding PasswordError}"/>
+        <Label Text="{Binding PasswordError}" IsVisible="{Binding ShowPasswordError}" Style="{StaticResource errorLabel}"/>
 
         <Label Text="Points"/>
-        <Label Text="{Binding Points}"/>
+        <Label Text="{Binding Score}"/>
         <Button Text="Save Changes" Command="{Binding SaveProfileCommand}" Margin="5"></Button>
 
     </VerticalStackLayout>

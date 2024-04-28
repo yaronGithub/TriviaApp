@@ -11,9 +11,18 @@ public partial class AppShell : Shell
 		this.BindingContext = vm;
 		InitializeComponent();
 		RegisterRoutes();
-	}
+        //MessagingCenter.Subscribe<ShellViewModel, string>(this, "ChangeTab", (sender, arg) =>
+        //{
+        //    if (arg.Equals("Profile"))
+        //    {
+        //        CurrentItem = Items[0]; // Change to the second tab
+        //    }
+        //    Add more conditions for other tabs if needed
+        //});
 
-	private void RegisterRoutes()
+    }
+
+    private void RegisterRoutes()
 	{
         Routing.RegisterRoute("userDetails", typeof(PlayerDetailsView));
         Routing.RegisterRoute("connectingToServer", typeof(ConnectingToServerView));

@@ -181,7 +181,7 @@ namespace TriviaAppClean.ViewModels
             {
                 if (ValidateForm())//if all filds are not null
                 {
-                    User user = new User()//set the user filds
+                    User user = new User()//set the user fields
                     {
                         Name = this.Name,
                         Email = this.Email,
@@ -192,7 +192,7 @@ namespace TriviaAppClean.ViewModels
                     bool success = await service.UpdateUser(user);//true if the user set false else
 
                 await Shell.Current.Navigation.PopModalAsync();
-                    if (!success)//if the user set faild
+                    if (!success)//if the user set failed
                     {
                         await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows a message
                     }
@@ -201,7 +201,7 @@ namespace TriviaAppClean.ViewModels
                         await Application.Current.MainPage.Navigation.PopAsync();
                     }
                 }
-                else//if there are problem with one or more of the filds
+                else//if there are problem with one or more of the fields
                     await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows a message
 
             }
