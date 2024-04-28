@@ -54,10 +54,14 @@ namespace TriviaAppClean.ViewModels
       
             public ICommand GoToLogInCommand { get; set; } //command for users that want to log out
             async void GoLogIn()
-            {
-
-                await Application.Current.MainPage.Navigation.PushModalAsync(loginView);//opens the log in page
-
+        { 
+                bool result = await Application.Current.MainPage.DisplayAlert("Logout", $"Are you sure you want to log out?", "ok", "cancel");//if the check returned not null means that the user exist, shows a message
+                if(result)
+                {
+               
+                    await Application.Current.MainPage.Navigation.PushModalAsync(loginView);//opens the log in page
+                  
+                }
             }
         }
     }
