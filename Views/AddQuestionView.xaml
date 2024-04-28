@@ -6,6 +6,7 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<Style x:Key="EnterButton" TargetType="Button">
+				<!--style for all buttons-->
 				<Setter Property="BackgroundColor"  Value="MediumPurple"/>
 				<Setter Property="TextColor" Value="White"/>
 				<Setter Property="FontAttributes" Value="Italic"/>

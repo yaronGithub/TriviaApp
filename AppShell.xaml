@@ -6,7 +6,8 @@
     xmlns:views="clr-namespace:TriviaAppClean.Views"
     Shell.FlyoutBehavior="Flyout">
     
-    <FlyoutItem IsVisible="{Binding IsTrainee}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs3">
+    <FlyoutItem IsVisible="{Binding IsTrainee}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs3"> 
+		<!--if the user is trainee it gives the user access for trainee shell-->
 		<ShellContent
          Title="Profile" 
          Icon="profile.jpg"
@@ -34,7 +35,8 @@
     
 
     <FlyoutItem IsVisible="{Binding IsMaster}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs2">
-        <ShellContent
+		<!--if the user is master it gives the user access for master shell-->
+		<ShellContent
          Title="Profile" 
          Icon="profile.jpg"
          ContentTemplate="{DataTemplate views:ProfileView}"
@@ -68,8 +70,8 @@
     
     
     <FlyoutItem IsVisible="{Binding IsAdmin}" FlyoutDisplayOptions="AsMultipleItems" Route="tabs1">
-        <ShellContent
-                
+		<!--if the user is admin it gives the user access for admin shell-->
+		<ShellContent         
       Title="Profile" 
       Icon="profile.jpg"
       ContentTemplate="{DataTemplate views:ProfileView}"
