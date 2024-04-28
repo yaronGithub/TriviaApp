@@ -56,7 +56,8 @@ namespace TriviaAppClean.ViewModels
             async void GoLogIn()
             {
 
-                await Application.Current.MainPage.Navigation.PushModalAsync(loginView);//opens the log in page
+            //await Application.Current.MainPage.Navigation.PushModalAsync(loginView);//opens the log in page
+                Application.Current.MainPage = new NavigationPage(loginView);
 
             }
         }
