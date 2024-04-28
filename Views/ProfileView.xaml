@@ -4,6 +4,7 @@
              x:Class="TriviaAppClean.Views.ProfileView"
              Title="ProfileView">
     <VerticalStackLayout>
+        <Label Text="העמוד הזה הוא לא עמוד שדרשת מאיתנו אבל זה מה שעשינו לפני שאמרת לנו איזה עמודים כן לעשות בסוף, אז נשמח שלא תיתן על זה ציון. זה רק extra" Style="{StaticResource errorLabel}"/>
         <Label Text="Edit Profile:" FontSize="Large"/>
         <Label Text="{Binding Name}" Style="{StaticResource headingStyle}"/>
 

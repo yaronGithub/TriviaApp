@@ -10,7 +10,7 @@ namespace TriviaAppClean.ViewModels
 {
     public class AddQuestionViewModel:ViewModelBase
     {
-        private string ifIncorrect;//if some fild is incorrect than it becomes not null
+        private string ifIncorrect;//error for incorrect field
         public string IfIncorrect
         {
             get
@@ -24,7 +24,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private bool showifIncorrect;//is there need to show incorrect
+        private bool showifIncorrect;//if needed to show incorrect
         public bool ShowIfIncorrect
         {
             get
@@ -38,7 +38,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private bool isPossible;//is possible to add the question
+        private bool isPossible;//is it possible to add the question
         public bool IsPossible
         {
             get
@@ -52,7 +52,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private bool IsAccessApprove()//do the user can have acces to add question
+        private bool IsAccessApprove()//can the user have access to add question
         {
             if (((App)Application.Current).LoggedInUser.Rank == 2 || ((App)Application.Current).LoggedInUser.Score >= 100)
             {
@@ -66,7 +66,7 @@ namespace TriviaAppClean.ViewModels
         }
 
 
-        private string questionContent;//getting the question content filled into the string
+        private string questionContent;//question content filled by the user
         public string QuestionContent
         {
             get
@@ -80,7 +80,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string correctAnswer;//getting the correct answer filled into the string
+        private string correctAnswer;//correct answer filled by the user
         public string CorrectAnswer
         {
             get
@@ -94,7 +94,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string badAnswer1;//getting the first wrong answer filled into the string
+        private string badAnswer1;//bad answer 1 filled by the user
         public string BadAnswer1
         {
             get
@@ -108,7 +108,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string badAnswer2;//getting the second wrong answer filled into the string
+        private string badAnswer2;//bad answer 2 filled by the user
         public string BadAnswer2
         {
             get
@@ -122,7 +122,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string badAnswer3;//getting the third wrong answer filled into the string
+        private string badAnswer3;//bad answer 3 filled by the user
         public string BadAnswer3
         {
             get
@@ -143,12 +143,11 @@ namespace TriviaAppClean.ViewModels
             this.triviaService = service;
             this.connectingToServerView = connect;
             this.IfIncorrect = "Must fill every field";
-           // this.ShowIfIncorrect = IsAccessApprove();
             this.IsPossible = IsAccessApprove();
             this.CompleteAddingCommand = new Command(OnAddQuestion);
         }
 
-        private bool ValidateForm()//making sure that all form filds are full
+        private bool ValidateForm()//making sure that all form fields are full
         {
             //Validate all fields first
            if(string.IsNullOrEmpty(QuestionContent)==false && string.IsNullOrEmpty(CorrectAnswer)==false && string.IsNullOrEmpty(BadAnswer1)==false && string.IsNullOrEmpty(BadAnswer2)==false && string.IsNullOrEmpty(BadAnswer3)==false)
@@ -172,19 +171,19 @@ namespace TriviaAppClean.ViewModels
             if (ValidateForm())//if the function returns true
             {
                 AmericanQuestion quest = new AmericanQuestion();//creating a new empty question
-                //filling the filds based on what the user enterd
+                //filling the fields based on what the user enterd
                 quest.QText = questionContent;
                 quest.CorrectAnswer = correctAnswer;
                 quest.Bad1 = badAnswer1;
                 quest.Bad2 = badAnswer2;
                 quest.Bad3 = badAnswer3;
                 quest.UserId = ((App)Application.Current).LoggedInUser.Id;
-                if (((App)Application.Current).LoggedInUser.Rank == 2) { quest.Status = 1; }//if the user is manger the question is automaticlly approved
-                else//if not the question status is waiting for approvel
+                if (((App)Application.Current).LoggedInUser.Rank == 2) { quest.Status = 1; }//if the user is manager then the question is automatically approved
+                else//if not the question status is waiting for approval
                 {
                     quest.Status = 0;
                 }
-                if (IsAccessApprove())//if the user have access
+                if (IsAccessApprove())//if the user has access
                 {
                     await Shell.Current.Navigation.PushModalAsync(connectingToServerView);
                     bool a = await this.triviaService.PostNewQuestion(quest);
@@ -201,17 +200,17 @@ namespace TriviaAppClean.ViewModels
                         this.BadAnswer2 = "";
                         this.BadAnswer3 = "";
                     }
-                    else//the user do have access but the adding was faill
+                    else//the user does have access but the adding failed
                     {
                         await Shell.Current.DisplayAlert("Add Qustion", "Question add failed", "ok");
                     }
                 }
-                else//the user dont have the rank to add question
+                else//the user doesn't have the rank to add question
                 {
                     await Shell.Current.DisplayAlert("Add Qustion", "Cannot add question yet", "ok");
                 }
             }
-            else//some of the filds are incorrect
+            else//some of the fields are incorrect
             {
                 await App.Current.MainPage.DisplayAlert("Add Question", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);
             }

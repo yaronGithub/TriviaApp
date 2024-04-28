@@ -35,7 +35,7 @@ namespace TriviaAppClean.ViewModels
         }
 
         private List<User> list;
-        private async void ReadUsers()//function thagt reads the users
+        private async void ReadUsers()//function that reads the users
         {
             TriviaWebAPIProxy service = this.usersService;
             list = await service.GetAllUsers();
@@ -43,7 +43,7 @@ namespace TriviaAppClean.ViewModels
             FilterUsers();
         }
 
-        private void FilterUsers()//function that filtters the users based on their scores and checking if there are already exist
+        private void FilterUsers()//function that filters the users based on their scores and checks if there are usernames that are empty and filters them
         {
             SortUsersByScoreDescending(list);
             if (UserName == null || String.IsNullOrEmpty(UserName))
@@ -62,33 +62,7 @@ namespace TriviaAppClean.ViewModels
             }
             Users = Users;
         }
-        //private Object selectedUser;
-        //public Object SelectedUser
-        //{
-        //    get
-        //    {
-        //        return selectedUser;
-        //    }
-        //    set
-        //    {
-        //        this.selectedUser = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-        //public ICommand SingleSelectCommand => new Command(OnSingleSelectUser);
-
-        //async void OnSingleSelectUser()
-        //{
-        //    if (SelectedUser != null)
-        //    {
-        //        var navParam = new Dictionary<string, object>()
-        //        {
-        //            {"selectedUser", SelectedUser }
-        //        };
-        //        await Shell.Current.GoToAsync($"userDetails", navParam);
-        //        SelectedUser = null;
-        //    }
-        //}
+   
         private string userName;
         public string UserName
         {

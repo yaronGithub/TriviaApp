@@ -24,16 +24,16 @@ namespace TriviaAppClean.ViewModels
         public ICommand LoginCommand { get; set; }
         private async void OnLogin()
         {
-            if (ShowEmailError || ShowPasswordError || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))//if theres an error
+            if (ShowEmailError || ShowPasswordError || string.IsNullOrEmpty(Email) || string.IsNullOrEmpty(Password))//if theres an error in the fields
             {
                 await Application.Current.MainPage.DisplayAlert("Login", $"יש בעיה עם הנתונים", "ok");//shows the message
                 return;
             }
-            //Choose the way you want to blobk the page while indicating a server call
+            //Blocks the page while indicating a server call
             InServerCall=true;
             //await Shell.Current.GoToAsync("connectingToServer");
             await Application.Current.MainPage.Navigation.PushModalAsync(connectingToServerView);//while connecting to the server shows the user the animation
-            User u  = await this.triviaService.LoginAsync(Email, Password);//checking if the user exist return null if not exict
+            User u  = await this.triviaService.LoginAsync(Email, Password);//checks if the user exists, returns null if does not exist
             await Application.Current.MainPage.Navigation.PopModalAsync();
             //await Shell.Current.Navigation.PopModalAsync();
             InServerCall = false;
@@ -42,19 +42,19 @@ namespace TriviaAppClean.ViewModels
             ((App)Application.Current).LoggedInUser = u;
             if (u == null)
             {
-                await Application.Current.MainPage.DisplayAlert("Login", "Login Failed!", "ok");//if the check returnd null means that the user dont exist shows a message
+                await Application.Current.MainPage.DisplayAlert("Login", "Login Failed!", "ok");//if the check returned null means that the user doesn't exist, shows a message
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeeded!", "ok");//if the check returnd not null means that the user exist shows a message
-                //u.Score = 10;
+                await Application.Current.MainPage.DisplayAlert("Login", $"Login Succeeded!", "ok");//if the check returned not null means that the user exist, shows a message
+              
                 ShellViewModel shellVM = (ShellViewModel)shell.BindingContext;
                 shellVM.RefreshProperties();
                 Application.Current.MainPage = shell;
             }
         }
 
-        private bool inServerCall;//is somthing calls to the server
+        private bool inServerCall;//if something calls to the server
         public bool InServerCall
         {
             get
@@ -77,7 +77,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
         // ---------------------------------------------------------------------------------------------
-        private bool showEmailError;
+        private bool showEmailError;//if needed to show the email error
         public bool ShowEmailError
         {
             get => showEmailError;
@@ -87,7 +87,7 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("ShowEmailError");
             }
         }
-        private string email;
+        private string email;//email filled by the user
         public string Email
         {
             get => email;
@@ -99,7 +99,7 @@ namespace TriviaAppClean.ViewModels
             }
         }
 
-        private string emailError;
+        private string emailError;//email error
         public string EmailError
         {
             get => emailError;
@@ -114,7 +114,7 @@ namespace TriviaAppClean.ViewModels
             this.ShowEmailError = (string.IsNullOrEmpty(Email) || Email.Length < 5 || !Email.Contains('@'));
             EmailError = "Invalid Email";
         }
-        private bool showPasswordError;
+        private bool showPasswordError;//if needed to show the password error
         public bool ShowPasswordError
         {
             get => showPasswordError;
@@ -124,7 +124,7 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("ShowPasswordError");
             }
         }
-        private string password;
+        private string password;//password filled by the user
         public string Password
         {
             get => password;
@@ -135,7 +135,7 @@ namespace TriviaAppClean.ViewModels
                 ValidatePassword();
             }
         }
-        private string passwordError;
+        private string passwordError;//password error
         public string PasswordError
         {
             get => passwordError;
@@ -145,17 +145,17 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged("PasswordError");
             }
         }
-        private void ValidatePassword()//validate if the password fild is full and there are more the 4 chars in it
+        private void ValidatePassword()//validates if the password field is full and there are more the 4 characters in it
         {
             this.ShowPasswordError = (string.IsNullOrEmpty(Password) || Password.Length < 4);
             PasswordError = "Invalid Password";
         }
-        public ICommand GoToSignUpCommand { get; set; } //command for users that didnt sign up yet
+        public ICommand GoToSignUpCommand { get; set; } //command for users that didn't sign up yet
         async void GoSignUp()
         {
 
-            await Application.Current.MainPage.Navigation.PushAsync(signUpView);//open the sign up view
-            //await Shell.Current.GoToAsync("//Views/SignUpView");
+            await Application.Current.MainPage.Navigation.PushAsync(signUpView);//opens the sign up page
+            
         }
     }
 }

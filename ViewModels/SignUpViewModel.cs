@@ -20,10 +20,7 @@ namespace TriviaAppClean.ViewModels
             this.PasswordError = "Must enter password";
         }
 
-        //private void Example()
-        //{
-        //    //Application.Current.MainPage.Navigation.PushAsync(new SignUpView);
-        //}
+      
         //all name properties
         #region שם
         private bool showNameError;
@@ -162,14 +159,14 @@ namespace TriviaAppClean.ViewModels
         }
 
         #endregion
-        private bool ValidateForm()//validate the form
+        private bool ValidateForm()//validates the form
         {
             //Validate all fields first
             ValidateEmail();
             ValidatePassword();
             ValidateName();
 
-            //check if any validation failed
+            //checks if any validation failed
             if (ShowEmailError || ShowNameError || ShowPasswordError)
                 return false;
             return true;
@@ -177,20 +174,20 @@ namespace TriviaAppClean.ViewModels
         public Command SaveDataCommand { protected set; get; }
         private async void SaveData()//saves the new user
         {
-            if (ValidateForm())//if all filds are not null and ok
+            if (ValidateForm())//if all fields are not null and don't have any problems
             {
-                User user = new User()//creating new user
+                User user = new User()//creates a new user
                 {
                     Name = this.Name,
                     Email = this.Email,
                     Password = this.Password
                 };
                 Application.Current.MainPage.Navigation.PushModalAsync(cs);
-                bool success = await service.RegisterUser(user);
+                bool success = await service.RegisterUser(user);//checks if the registration was successful or not
                 Application.Current.MainPage.Navigation.PopModalAsync();
                 if (!success)//if the adding wasnt successfull
                 {
-                    await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows the message
+                    await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows the message if there is a problem with the fields
                 }
                 else
                 {
@@ -198,7 +195,7 @@ namespace TriviaAppClean.ViewModels
                 }
             }
             else//if there are filds that are null or not ok
-                await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows the message
+                await App.Current.MainPage.DisplayAlert("שמירת נתונים", "יש בעיה עם הנתונים", "אישור", FlowDirection.RightToLeft);//shows the message if the registration was successful
 
         }
     }
