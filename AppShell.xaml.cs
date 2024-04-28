@@ -19,6 +19,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("connectingToServer", typeof(ConnectingToServerView));
         Routing.RegisterRoute(nameof(ProfileView), typeof(ProfileView));
         Routing.RegisterRoute(nameof(TriviaGameView), typeof(TriviaGameView));
+    
     }
 
     protected override void OnAppearing()

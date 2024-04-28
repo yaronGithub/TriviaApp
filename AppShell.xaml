@@ -31,6 +31,8 @@
       Icon="add_question.jpeg"
       ContentTemplate="{DataTemplate views:AddQuestionView}"
       Route="addQuestion" />
+
+        <ShellContent Title="Log Out" ContentTemplate="{DataTemplate views:LogoutView}" Route="logOut"/>
     </FlyoutItem>
     
 
@@ -65,6 +67,8 @@
       Icon="question_approval.jpg"
       ContentTemplate="{DataTemplate views:QuestionApprovalView}"
       Route="questionApproval" />
+
+        <ShellContent Title="Log Out" ContentTemplate="{DataTemplate views:LogoutView}" Route="logOut"/>
     </FlyoutItem>
 
     
@@ -113,6 +117,8 @@
             ContentTemplate="{DataTemplate views:AllQuestionsView}"
             Route="allQuestions"
             />
+
+        <ShellContent Title="Log Out" ContentTemplate="{DataTemplate views:LogoutView}" Route="logOut"/>
 
     </FlyoutItem>
 </Shell>
