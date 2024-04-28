@@ -77,5 +77,32 @@ namespace TriviaAppClean.ViewModels
                 OnPropertyChanged();
             }
         }
+        private Object selectedUser;
+        public Object SelectedUser
+        {
+            get
+            {
+                return selectedUser;
+            }
+            set
+            {
+                this.selectedUser = value;
+                OnPropertyChanged();
+            }
+        }
+        public ICommand SingleSelectCommand => new Command(OnSingleSelectUser);
+
+        async void OnSingleSelectUser()
+        {
+            if (SelectedUser != null)
+            {
+                var navParam = new Dictionary<string, object>()
+                {
+                    {"selectedUser", SelectedUser }
+                };
+                await Shell.Current.GoToAsync($"userDetails", navParam);
+                SelectedUser = null;
+            }
+        }
     }
 }

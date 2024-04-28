@@ -58,11 +58,16 @@ namespace TriviaAppClean.ViewModels
                 bool result = await Application.Current.MainPage.DisplayAlert("Logout", $"Are you sure you want to log out?", "ok", "cancel");//if the check returned not null means that the user exist, shows a message
                 if(result)
                 {
-               
-                    await Application.Current.MainPage.Navigation.PushModalAsync(loginView);//opens the log in page
-                  
-                }
+
+                // await Application.Current.MainPage.Navigation.PushModalAsync(loginView);//opens the log in page
+                Application.Current.MainPage = new NavigationPage(loginView);
+
+
             }
+        }
+        }
+    }
+           
         }
     }
 
