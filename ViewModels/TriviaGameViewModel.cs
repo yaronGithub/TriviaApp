@@ -242,6 +242,14 @@ namespace TriviaAppClean.ViewModels
              * If the Next button is clicked than this method is called.
              * This method updates the question to a new one.
              * */
+            W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
+            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
+            W3Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
+            CorrectColor = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
+            CorrectAnswer = "";
+            WrongAnswer1 = "";
+            WrongAnswer2 = "";
+            WrongAnswer3 = "";
             Visible = false;
             Dialog = "";
             AmericanQuestion amq = await service.GetRandomQuestion(); // A new Question from the server.
@@ -250,10 +258,6 @@ namespace TriviaAppClean.ViewModels
             WrongAnswer1 = amq.Bad1;
             WrongAnswer2 = amq.Bad2;
             WrongAnswer3 = amq.Bad3;
-            W1Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
-            W2Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
-            W3Color = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
-            CorrectColor = Color.FromRgba(0.31764707, 0.16862746, 0.83137256, 1); // Default color
             Enabled = true; // The buttons are now enabled
         }
 
