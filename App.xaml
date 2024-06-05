@@ -13,6 +13,19 @@
                 <Setter Property="FontSize" Value="15"/>
                 <Setter Property="TextColor" Value="Red"/>
             </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Red"/>
+                <Setter Property="BackgroundColor" Value="BlanchedAlmond" />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="TextColor" Value="RosyBrown" />
+            </Style>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
